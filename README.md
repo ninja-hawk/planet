@@ -7,7 +7,7 @@
 
 
 
-## Step to Build the Environmetn
+## Step to Build the Environment
 
 1. Start up a Docker container
 ```bash
@@ -18,7 +18,7 @@ if returned below, give a permission
 export DOCKER_BUILDKIT=0
 ```
 
-2. 
+2. Set up Phoenix
 Enter an elixir comtainer "web"
 ```bash
 make web
