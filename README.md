@@ -1,7 +1,8 @@
 # Planet
 
 # Environment 
-* Elixir 1.14.5 (compiled with Erlang/OTP 26)
+* Phoenix v1.7.12
+* Elixir v1.14.5 (compiled with Erlang/OTP 26)
 * Erlang/OTP 26 [erts-14.2.5] [source] [64-bit] [smp:8:8] [ds:8:8:10] [async-threads:1] [jit]
 * PostgreSQL 14.12
 
