@@ -1,0 +1,20 @@
+<.header>
+  Asset <%= @asset.id %>
+  <:subtitle>This is a asset record from your database.</:subtitle>
+  <:actions>
+    <.link href={~p"/assets/#{@asset}/edit"}>
+      <.button>Edit asset</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.list>
+  <:item title="Name"><%= @asset.name %></:item>
+  <:item title="Description"><%= @asset.description %></:item>
+  <:item title="Eco effect"><%= @asset.eco_effect %></:item>
+  <:item title="Is skill"><%= @asset.is_skill %></:item>
+  <:item title="Is duplicatable"><%= @asset.is_duplicatable %></:item>
+  <:item title="Deleted at"><%= @asset.deleted_at %></:item>
+</.list>
+
+<.back navigate={~p"/assets"}>Back to assets</.back>
