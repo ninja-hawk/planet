@@ -20,6 +20,5 @@ defmodule Planet.Cosmos.Asset do
     |> validate_required([:name, :description, :eco_effect, :is_skill, :is_duplicatable])
     |> validate_length(:name, max: 30)
     |> validate_length(:description, max: 511)
-    |> validate_number(:eco_effect, greater_than_or_equal_to: 0)
   end
 end
