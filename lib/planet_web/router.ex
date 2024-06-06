@@ -24,7 +24,6 @@ defmodule PlanetWeb.Router do
 
   scope "/admin", HelloWeb.Admin do
     pipe_through :browser
-
     # resources "/reviews", ReviewController
   end
 
