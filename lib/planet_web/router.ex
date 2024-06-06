@@ -23,6 +23,7 @@ defmodule PlanetWeb.Router do
     get "/", PageController, :home
     get "/hello", HelloController, :index
     get "/hello/:messenger", HelloController, :show
+    resources "/assets", AssetController
   end
 
   scope "/admin", HelloWeb.Admin do
