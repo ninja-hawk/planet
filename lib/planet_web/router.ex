@@ -17,19 +17,24 @@ defmodule PlanetWeb.Router do
     plug :accepts, ["json"]
   end
 
+  pipeline :admin do
+    plug PlanetWeb.Plugs.RequireAdmin
+  end
+
   scope "/", PlanetWeb do
     pipe_through :browser
 
     get "/", PageController, :home
     get "/hello", HelloController, :index
     get "/hello/:messenger", HelloController, :show
-    resources "/assets", AssetController
-  end
+    end
 
-  scope "/admin", HelloWeb.Admin do
-    pipe_through :browser
-    # resources "/reviews", ReviewController
-  end
+    scope "/", PlanetWeb do
+      pipe_through [:browser, :admin]
+
+      resources "/assets", AssetController
+    end
+
 
   # Other scopes may use custom stacks.
   # scope "/api", PlanetWeb do

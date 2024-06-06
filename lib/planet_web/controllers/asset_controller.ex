@@ -4,6 +4,8 @@ defmodule PlanetWeb.AssetController do
   alias Planet.Cosmos
   alias Planet.Cosmos.Asset
 
+  plug PlanetWeb.Plugs.RequireAdmin when action in [:new, :create, :edit, :update, :delete]
+
   def index(conn, _params) do
     assets = Cosmos.list_assets()
     render(conn, :index, assets: assets)
