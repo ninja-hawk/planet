@@ -66,4 +66,76 @@ defmodule Planet.CosmosTest do
       assert %Ecto.Changeset{} = Cosmos.change_asset(asset)
     end
   end
+
+  describe "social_issues" do
+    alias Planet.Cosmos.SocialIssue
+
+    import Planet.CosmosFixtures
+
+    @invalid_attrs %{name: nil, situation: nil, possible_solution: nil, youth_effect: nil, economic_growth_effect: nil, co2_effect: nil, is_question: nil, is_last: nil, tip: nil, deleted_at: nil}
+
+    test "list_social_issues/0 returns all social_issues" do
+      social_issue = social_issue_fixture()
+      assert Cosmos.list_social_issues() == [social_issue]
+    end
+
+    test "get_social_issue!/1 returns the social_issue with given id" do
+      social_issue = social_issue_fixture()
+      assert Cosmos.get_social_issue!(social_issue.id) == social_issue
+    end
+
+    test "create_social_issue/1 with valid data creates a social_issue" do
+      valid_attrs = %{name: "some name", situation: "some situation", possible_solution: "some possible_solution", youth_effect: 42, economic_growth_effect: 42, co2_effect: 42, is_question: true, is_last: true, tip: "some tip", deleted_at: ~U[2024-06-06 06:53:00Z]}
+
+      assert {:ok, %SocialIssue{} = social_issue} = Cosmos.create_social_issue(valid_attrs)
+      assert social_issue.name == "some name"
+      assert social_issue.situation == "some situation"
+      assert social_issue.possible_solution == "some possible_solution"
+      assert social_issue.youth_effect == 42
+      assert social_issue.economic_growth_effect == 42
+      assert social_issue.co2_effect == 42
+      assert social_issue.is_question == true
+      assert social_issue.is_last == true
+      assert social_issue.tip == "some tip"
+      assert social_issue.deleted_at == ~U[2024-06-06 06:53:00Z]
+    end
+
+    test "create_social_issue/1 with invalid data returns error changeset" do
+      assert {:error, %Ecto.Changeset{}} = Cosmos.create_social_issue(@invalid_attrs)
+    end
+
+    test "update_social_issue/2 with valid data updates the social_issue" do
+      social_issue = social_issue_fixture()
+      update_attrs = %{name: "some updated name", situation: "some updated situation", possible_solution: "some updated possible_solution", youth_effect: 43, economic_growth_effect: 43, co2_effect: 43, is_question: false, is_last: false, tip: "some updated tip", deleted_at: ~U[2024-06-07 06:53:00Z]}
+
+      assert {:ok, %SocialIssue{} = social_issue} = Cosmos.update_social_issue(social_issue, update_attrs)
+      assert social_issue.name == "some updated name"
+      assert social_issue.situation == "some updated situation"
+      assert social_issue.possible_solution == "some updated possible_solution"
+      assert social_issue.youth_effect == 43
+      assert social_issue.economic_growth_effect == 43
+      assert social_issue.co2_effect == 43
+      assert social_issue.is_question == false
+      assert social_issue.is_last == false
+      assert social_issue.tip == "some updated tip"
+      assert social_issue.deleted_at == ~U[2024-06-07 06:53:00Z]
+    end
+
+    test "update_social_issue/2 with invalid data returns error changeset" do
+      social_issue = social_issue_fixture()
+      assert {:error, %Ecto.Changeset{}} = Cosmos.update_social_issue(social_issue, @invalid_attrs)
+      assert social_issue == Cosmos.get_social_issue!(social_issue.id)
+    end
+
+    test "delete_social_issue/1 deletes the social_issue" do
+      social_issue = social_issue_fixture()
+      assert {:ok, %SocialIssue{}} = Cosmos.delete_social_issue(social_issue)
+      assert_raise Ecto.NoResultsError, fn -> Cosmos.get_social_issue!(social_issue.id) end
+    end
+
+    test "change_social_issue/1 returns a social_issue changeset" do
+      social_issue = social_issue_fixture()
+      assert %Ecto.Changeset{} = Cosmos.change_social_issue(social_issue)
+    end
+  end
 end

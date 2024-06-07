@@ -1,0 +1,32 @@
+<.header>
+  Listing Social issues
+  <:actions>
+    <.link href={~p"/social_issues/new"}>
+      <.button>New Social issue</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.table id="social_issues" rows={@social_issues} row_click={&JS.navigate(~p"/social_issues/#{&1}")}>
+  <:col :let={social_issue} label="Name"><%= social_issue.name %></:col>
+  <:col :let={social_issue} label="Situation"><%= social_issue.situation %></:col>
+  <:col :let={social_issue} label="Possible solution"><%= social_issue.possible_solution %></:col>
+  <:col :let={social_issue} label="Youth effect"><%= social_issue.youth_effect %></:col>
+  <:col :let={social_issue} label="Economic growth effect"><%= social_issue.economic_growth_effect %></:col>
+  <:col :let={social_issue} label="Co2 effect"><%= social_issue.co2_effect %></:col>
+  <:col :let={social_issue} label="Is question"><%= social_issue.is_question %></:col>
+  <:col :let={social_issue} label="Is last"><%= social_issue.is_last %></:col>
+  <:col :let={social_issue} label="Tip"><%= social_issue.tip %></:col>
+  <:col :let={social_issue} label="Deleted at"><%= social_issue.deleted_at %></:col>
+  <:action :let={social_issue}>
+    <div class="sr-only">
+      <.link navigate={~p"/social_issues/#{social_issue}"}>Show</.link>
+    </div>
+    <.link navigate={~p"/social_issues/#{social_issue}/edit"}>Edit</.link>
+  </:action>
+  <:action :let={social_issue}>
+    <.link href={~p"/social_issues/#{social_issue}"} method="delete" data-confirm="Are you sure?">
+      Delete
+    </.link>
+  </:action>
+</.table>

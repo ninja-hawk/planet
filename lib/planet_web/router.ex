@@ -33,6 +33,7 @@ defmodule PlanetWeb.Router do
       pipe_through [:browser, :admin]
 
       resources "/assets", AssetController
+      resources "/social_issues", SocialIssueController
     end
 
 

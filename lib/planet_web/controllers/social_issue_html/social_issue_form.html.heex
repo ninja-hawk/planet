@@ -1,0 +1,18 @@
+<.simple_form :let={f} for={@changeset} action={@action}>
+  <.error :if={@changeset.action}>
+    Oops, something went wrong! Please check the errors below.
+  </.error>
+  <.input field={f[:name]} type="text" label="Name" />
+  <.input field={f[:situation]} type="text" label="Situation" />
+  <.input field={f[:possible_solution]} type="text" label="Possible solution" />
+  <.input field={f[:youth_effect]} type="number" label="Youth effect" />
+  <.input field={f[:economic_growth_effect]} type="number" label="Economic growth effect" />
+  <.input field={f[:co2_effect]} type="number" label="Co2 effect" />
+  <.input field={f[:is_question]} type="checkbox" label="Is question" />
+  <.input field={f[:is_last]} type="checkbox" label="Is last" />
+  <.input field={f[:tip]} type="text" label="Tip" />
+  <.input field={f[:deleted_at]} type="datetime-local" label="Deleted at" />
+  <:actions>
+    <.button>Save Social issue</.button>
+  </:actions>
+</.simple_form>
