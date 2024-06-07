@@ -1,11 +1,9 @@
-# Script for populating the database. You can run it as:
-#
-#     mix run priv/repo/seeds.exs
-#
-# Inside the script, you can read and write to any of your
-# repositories directly:
-#
-#     Planet.Repo.insert!(%Planet.SomeSchema{})
-#
-# We recommend using the bang functions (`insert!`, `update!`
-# and so on) as they will fail if something goes wrong.
+# mix run priv/repo/seeds.exs
+
+
+# Load individual seed files
+# Code.eval_file("priv/repo/seeds/user.exs")
+# Code.eval_file("priv/repo/seeds/social_issue.exs")
+# Code.eval_file("priv/repo/seeds/asset.exs")
+Code.eval_file("priv/repo/seeds/solution.exs")
+# Add more files as needed
