@@ -45,4 +45,30 @@ defmodule Planet.CosmosFixtures do
 
     social_issue
   end
+
+  @doc """
+  Generate a solution.
+  """
+  def solution_fixture(attrs \\ %{}) do
+    {:ok, solution} =
+      attrs
+      |> Enum.into(%{
+        co2_effect: 42,
+        comment: "some comment",
+        deleted_at: ~U[2024-06-06 09:40:00Z],
+        description: "some description",
+        high_capital_input: 42,
+        high_return: 42,
+        is_choice: true,
+        low_capital_input: 42,
+        low_return: 42,
+        middle_capital_input: 42,
+        middle_return: 42,
+        name: "some name",
+        roi_func_id: 42
+      })
+      |> Planet.Cosmos.create_solution()
+
+    solution
+  end
 end
