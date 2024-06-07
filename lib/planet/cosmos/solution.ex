@@ -25,7 +25,7 @@ defmodule Planet.Cosmos.Solution do
     solution
     |> cast(attrs, [:name, :description, :low_capital_input, :middle_capital_input, :high_capital_input, :low_return, :middle_return, :high_return, :roi_func_id, :co2_effect, :is_choice, :comment, :deleted_at])
     |> validate_required([:name, :description, :low_capital_input, :middle_capital_input, :high_capital_input, :low_return, :middle_return, :high_return, :co2_effect, :is_choice])
-    |> validate_length(:name, max: 30)
+    |> validate_length(:name, max: 127)
     |> validate_length(:description, max: 511)
     |> validate_length(:comment, max: 511)
   end
