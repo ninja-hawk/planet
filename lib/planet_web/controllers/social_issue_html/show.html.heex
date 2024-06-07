@@ -1,0 +1,24 @@
+<.header>
+  Social issue <%= @social_issue.id %>
+  <:subtitle>This is a social_issue record from your database.</:subtitle>
+  <:actions>
+    <.link href={~p"/social_issues/#{@social_issue}/edit"}>
+      <.button>Edit social_issue</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.list>
+  <:item title="Name"><%= @social_issue.name %></:item>
+  <:item title="Situation"><%= @social_issue.situation %></:item>
+  <:item title="Possible solution"><%= @social_issue.possible_solution %></:item>
+  <:item title="Youth effect"><%= @social_issue.youth_effect %></:item>
+  <:item title="Economic growth effect"><%= @social_issue.economic_growth_effect %></:item>
+  <:item title="Co2 effect"><%= @social_issue.co2_effect %></:item>
+  <:item title="Is question"><%= @social_issue.is_question %></:item>
+  <:item title="Is last"><%= @social_issue.is_last %></:item>
+  <:item title="Tip"><%= @social_issue.tip %></:item>
+  <:item title="Deleted at"><%= @social_issue.deleted_at %></:item>
+</.list>
+
+<.back navigate={~p"/social_issues"}>Back to social_issues</.back>

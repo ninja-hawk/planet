@@ -101,4 +101,100 @@ defmodule Planet.Cosmos do
   def change_asset(%Asset{} = asset, attrs \\ %{}) do
     Asset.changeset(asset, attrs)
   end
+
+  alias Planet.Cosmos.SocialIssue
+
+  @doc """
+  Returns the list of social_issues.
+
+  ## Examples
+
+      iex> list_social_issues()
+      [%SocialIssue{}, ...]
+
+  """
+  def list_social_issues do
+    Repo.all(SocialIssue)
+  end
+
+  @doc """
+  Gets a single social_issue.
+
+  Raises `Ecto.NoResultsError` if the Social issue does not exist.
+
+  ## Examples
+
+      iex> get_social_issue!(123)
+      %SocialIssue{}
+
+      iex> get_social_issue!(456)
+      ** (Ecto.NoResultsError)
+
+  """
+  def get_social_issue!(id), do: Repo.get!(SocialIssue, id)
+
+  @doc """
+  Creates a social_issue.
+
+  ## Examples
+
+      iex> create_social_issue(%{field: value})
+      {:ok, %SocialIssue{}}
+
+      iex> create_social_issue(%{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def create_social_issue(attrs \\ %{}) do
+    %SocialIssue{}
+    |> SocialIssue.changeset(attrs)
+    |> Repo.insert()
+  end
+
+  @doc """
+  Updates a social_issue.
+
+  ## Examples
+
+      iex> update_social_issue(social_issue, %{field: new_value})
+      {:ok, %SocialIssue{}}
+
+      iex> update_social_issue(social_issue, %{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def update_social_issue(%SocialIssue{} = social_issue, attrs) do
+    social_issue
+    |> SocialIssue.changeset(attrs)
+    |> Repo.update()
+  end
+
+  @doc """
+  Deletes a social_issue.
+
+  ## Examples
+
+      iex> delete_social_issue(social_issue)
+      {:ok, %SocialIssue{}}
+
+      iex> delete_social_issue(social_issue)
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def delete_social_issue(%SocialIssue{} = social_issue) do
+    Repo.delete(social_issue)
+  end
+
+  @doc """
+  Returns an `%Ecto.Changeset{}` for tracking social_issue changes.
+
+  ## Examples
+
+      iex> change_social_issue(social_issue)
+      %Ecto.Changeset{data: %SocialIssue{}}
+
+  """
+  def change_social_issue(%SocialIssue{} = social_issue, attrs \\ %{}) do
+    SocialIssue.changeset(social_issue, attrs)
+  end
 end
