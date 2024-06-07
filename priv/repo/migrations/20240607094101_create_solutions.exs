@@ -3,7 +3,7 @@ defmodule Planet.Repo.Migrations.CreateSolutions do
 
   def change do
     create table(:solutions) do
-      add :name, :string, size: 30, null: false
+      add :name, :string, size: 127, null: false
       add :description, :string, size: 511
       add :low_capital_input, :integer, null: false
       add :middle_capital_input, :integer, null: false
