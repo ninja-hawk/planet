@@ -1,0 +1,21 @@
+<.simple_form :let={f} for={@changeset} action={@action}>
+  <.error :if={@changeset.action}>
+    Oops, something went wrong! Please check the errors below.
+  </.error>
+  <.input field={f[:name]} type="text" label="Name" />
+  <.input field={f[:description]} type="text" label="Description" />
+  <.input field={f[:low_capital_input]} type="number" label="Low capital input" />
+  <.input field={f[:middle_capital_input]} type="number" label="Middle capital input" />
+  <.input field={f[:high_capital_input]} type="number" label="High capital input" />
+  <.input field={f[:low_return]} type="number" label="Low return" />
+  <.input field={f[:middle_return]} type="number" label="Middle return" />
+  <.input field={f[:high_return]} type="number" label="High return" />
+  <.input field={f[:roi_func_id]} type="number" label="Roi func" />
+  <.input field={f[:co2_effect]} type="number" label="Co2 effect" />
+  <.input field={f[:is_choice]} type="checkbox" label="Is choice" />
+  <.input field={f[:comment]} type="text" label="Comment" />
+  <.input field={f[:deleted_at]} type="datetime-local" label="Deleted at" />
+  <:actions>
+    <.button>Save Solution</.button>
+  </:actions>
+</.simple_form>

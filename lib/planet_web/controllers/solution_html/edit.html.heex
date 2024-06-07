@@ -1,0 +1,8 @@
+<.header>
+  Edit Solution <%= @solution.id %>
+  <:subtitle>Use this form to manage solution records in your database.</:subtitle>
+</.header>
+
+<.solution_form changeset={@changeset} action={~p"/solutions/#{@solution}"} />
+
+<.back navigate={~p"/solutions"}>Back to solutions</.back>

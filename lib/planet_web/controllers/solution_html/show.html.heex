@@ -1,0 +1,27 @@
+<.header>
+  Solution <%= @solution.id %>
+  <:subtitle>This is a solution record from your database.</:subtitle>
+  <:actions>
+    <.link href={~p"/solutions/#{@solution}/edit"}>
+      <.button>Edit solution</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.list>
+  <:item title="Name"><%= @solution.name %></:item>
+  <:item title="Description"><%= @solution.description %></:item>
+  <:item title="Low capital input"><%= @solution.low_capital_input %></:item>
+  <:item title="Middle capital input"><%= @solution.middle_capital_input %></:item>
+  <:item title="High capital input"><%= @solution.high_capital_input %></:item>
+  <:item title="Low return"><%= @solution.low_return %></:item>
+  <:item title="Middle return"><%= @solution.middle_return %></:item>
+  <:item title="High return"><%= @solution.high_return %></:item>
+  <:item title="Roi func"><%= @solution.roi_func_id %></:item>
+  <:item title="Co2 effect"><%= @solution.co2_effect %></:item>
+  <:item title="Is choice"><%= @solution.is_choice %></:item>
+  <:item title="Comment"><%= @solution.comment %></:item>
+  <:item title="Deleted at"><%= @solution.deleted_at %></:item>
+</.list>
+
+<.back navigate={~p"/solutions"}>Back to solutions</.back>

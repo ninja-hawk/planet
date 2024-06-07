@@ -1,0 +1,35 @@
+<.header>
+  Listing Solutions
+  <:actions>
+    <.link href={~p"/solutions/new"}>
+      <.button>New Solution</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.table id="solutions" rows={@solutions} row_click={&JS.navigate(~p"/solutions/#{&1}")}>
+  <:col :let={solution} label="Name"><%= solution.name %></:col>
+  <:col :let={solution} label="Description"><%= solution.description %></:col>
+  <:col :let={solution} label="Low capital input"><%= solution.low_capital_input %></:col>
+  <:col :let={solution} label="Middle capital input"><%= solution.middle_capital_input %></:col>
+  <:col :let={solution} label="High capital input"><%= solution.high_capital_input %></:col>
+  <:col :let={solution} label="Low return"><%= solution.low_return %></:col>
+  <:col :let={solution} label="Middle return"><%= solution.middle_return %></:col>
+  <:col :let={solution} label="High return"><%= solution.high_return %></:col>
+  <:col :let={solution} label="Roi func"><%= solution.roi_func_id %></:col>
+  <:col :let={solution} label="Co2 effect"><%= solution.co2_effect %></:col>
+  <:col :let={solution} label="Is choice"><%= solution.is_choice %></:col>
+  <:col :let={solution} label="Comment"><%= solution.comment %></:col>
+  <:col :let={solution} label="Deleted at"><%= solution.deleted_at %></:col>
+  <:action :let={solution}>
+    <div class="sr-only">
+      <.link navigate={~p"/solutions/#{solution}"}>Show</.link>
+    </div>
+    <.link navigate={~p"/solutions/#{solution}/edit"}>Edit</.link>
+  </:action>
+  <:action :let={solution}>
+    <.link href={~p"/solutions/#{solution}"} method="delete" data-confirm="Are you sure?">
+      Delete
+    </.link>
+  </:action>
+</.table>

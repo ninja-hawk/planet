@@ -138,4 +138,82 @@ defmodule Planet.CosmosTest do
       assert %Ecto.Changeset{} = Cosmos.change_social_issue(social_issue)
     end
   end
+
+  describe "solutions" do
+    alias Planet.Cosmos.Solution
+
+    import Planet.CosmosFixtures
+
+    @invalid_attrs %{name: nil, description: nil, comment: nil, low_capital_input: nil, middle_capital_input: nil, high_capital_input: nil, low_return: nil, middle_return: nil, high_return: nil, roi_func_id: nil, co2_effect: nil, is_choice: nil, deleted_at: nil}
+
+    test "list_solutions/0 returns all solutions" do
+      solution = solution_fixture()
+      assert Cosmos.list_solutions() == [solution]
+    end
+
+    test "get_solution!/1 returns the solution with given id" do
+      solution = solution_fixture()
+      assert Cosmos.get_solution!(solution.id) == solution
+    end
+
+    test "create_solution/1 with valid data creates a solution" do
+      valid_attrs = %{name: "some name", description: "some description", comment: "some comment", low_capital_input: 42, middle_capital_input: 42, high_capital_input: 42, low_return: 42, middle_return: 42, high_return: 42, roi_func_id: 42, co2_effect: 42, is_choice: true, deleted_at: ~U[2024-06-06 09:40:00Z]}
+
+      assert {:ok, %Solution{} = solution} = Cosmos.create_solution(valid_attrs)
+      assert solution.name == "some name"
+      assert solution.description == "some description"
+      assert solution.comment == "some comment"
+      assert solution.low_capital_input == 42
+      assert solution.middle_capital_input == 42
+      assert solution.high_capital_input == 42
+      assert solution.low_return == 42
+      assert solution.middle_return == 42
+      assert solution.high_return == 42
+      assert solution.roi_func_id == 42
+      assert solution.co2_effect == 42
+      assert solution.is_choice == true
+      assert solution.deleted_at == ~U[2024-06-06 09:40:00Z]
+    end
+
+    test "create_solution/1 with invalid data returns error changeset" do
+      assert {:error, %Ecto.Changeset{}} = Cosmos.create_solution(@invalid_attrs)
+    end
+
+    test "update_solution/2 with valid data updates the solution" do
+      solution = solution_fixture()
+      update_attrs = %{name: "some updated name", description: "some updated description", comment: "some updated comment", low_capital_input: 43, middle_capital_input: 43, high_capital_input: 43, low_return: 43, middle_return: 43, high_return: 43, roi_func_id: 43, co2_effect: 43, is_choice: false, deleted_at: ~U[2024-06-07 09:40:00Z]}
+
+      assert {:ok, %Solution{} = solution} = Cosmos.update_solution(solution, update_attrs)
+      assert solution.name == "some updated name"
+      assert solution.description == "some updated description"
+      assert solution.comment == "some updated comment"
+      assert solution.low_capital_input == 43
+      assert solution.middle_capital_input == 43
+      assert solution.high_capital_input == 43
+      assert solution.low_return == 43
+      assert solution.middle_return == 43
+      assert solution.high_return == 43
+      assert solution.roi_func_id == 43
+      assert solution.co2_effect == 43
+      assert solution.is_choice == false
+      assert solution.deleted_at == ~U[2024-06-07 09:40:00Z]
+    end
+
+    test "update_solution/2 with invalid data returns error changeset" do
+      solution = solution_fixture()
+      assert {:error, %Ecto.Changeset{}} = Cosmos.update_solution(solution, @invalid_attrs)
+      assert solution == Cosmos.get_solution!(solution.id)
+    end
+
+    test "delete_solution/1 deletes the solution" do
+      solution = solution_fixture()
+      assert {:ok, %Solution{}} = Cosmos.delete_solution(solution)
+      assert_raise Ecto.NoResultsError, fn -> Cosmos.get_solution!(solution.id) end
+    end
+
+    test "change_solution/1 returns a solution changeset" do
+      solution = solution_fixture()
+      assert %Ecto.Changeset{} = Cosmos.change_solution(solution)
+    end
+  end
 end
