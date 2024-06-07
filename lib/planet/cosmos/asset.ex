@@ -17,7 +17,7 @@ defmodule Planet.Cosmos.Asset do
   def changeset(asset, attrs) do
     asset
     |> cast(attrs, [:name, :description, :eco_effect, :is_skill, :is_duplicatable, :deleted_at])
-    |> validate_required([:name, :description, :eco_effect, :is_skill, :is_duplicatable])
+    |> validate_required([:name, :description, :is_skill])
     |> validate_length(:name, max: 30)
     |> validate_length(:description, max: 511)
   end
