@@ -2,14 +2,16 @@ defmodule PlanetWeb.CheckAssetController do
   use PlanetWeb, :controller
 
   alias Planet.Cosmos
-  alias Planet.Cosmos.Asset
 
   def index(conn, _params) do
     assets = Cosmos.list_assets()
-    render(conn, :index, assets: assets)
+    social_issues = Cosmos.list_social_issues()
+    render(conn, :index, assets: assets, social_issues: social_issues)
   end
 
-  def show(conn, %{"messenger" => messenger}) do
-    render(conn, :show, messenger: messenger)
+  def show(conn, _params) do
+    conn
+    |> put_flash(:info, "Asset created successfully.")
+    render(conn, :show)
   end
 end

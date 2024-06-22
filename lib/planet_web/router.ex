@@ -26,7 +26,9 @@ defmodule PlanetWeb.Router do
 
     get "/", PageController, :home
     get "/check_asset", CheckAssetController, :index
-    get "/check_asset/:messenger", CheckAssetController, :show
+    get "/check_asset/result", CheckAssetController, :show
+    # post "/check_asset/result", CheckAssetController, :show
+    # get "/check_asset/:messenger", CheckAssetController, :show
     end
 
     scope "/", PlanetWeb do

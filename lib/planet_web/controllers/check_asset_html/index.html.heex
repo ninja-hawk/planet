@@ -1,10 +1,91 @@
-<h1>Assets</h1>
+<.header>
+  Select an Asset
+  <:actions>
+    <.link href={~p"/"}>
+      <.button>Back to Home</.button>
+    </.link>
+  </:actions>
+</.header>
 
-<select name="asset1">
-  <%= for asset <- @assets do %>
-    <option>
-      <%= asset.id %>. 
-      <%= asset.name %>
-    </option>
-  <% end %>
-</select>
+<div>
+  <select name="asset_id" class="form-control">
+    <option value="">Select a Social Issue</option>
+    <%= for social_issue <- @social_issues do %>
+      <option value={social_issue.id}>
+        <%= social_issue.id %>. <%= social_issue.name %>
+      </option>
+    <% end %>
+  </select>
+</div>
+
+<div>
+  <select name="asset_id" class="form-control">
+    <option value="">Select an Asset</option>
+    <%= for asset <- @assets do %>
+      <option value={asset.id}>
+        <%= asset.id %>. <%= asset.name %>
+      </option>
+    <% end %>
+  </select>
+</div>
+
+<div>
+  <select name="asset_id" class="form-control">
+    <option value="">Select an Asset</option>
+    <%= for asset <- @assets do %>
+      <option value={asset.id}>
+        <%= asset.id %>. <%= asset.name %>
+      </option>
+    <% end %>
+  </select>
+</div>
+
+<div>
+  <select name="asset_id" class="form-control">
+    <option value="">Select an Asset</option>
+    <%= for asset <- @assets do %>
+      <option value={asset.id}>
+        <%= asset.id %>. <%= asset.name %>
+      </option>
+    <% end %>
+  </select>
+</div>
+
+<div>
+  <select name="asset_id" class="form-control">
+    <option value="">Select an Asset</option>
+    <%= for asset <- @assets do %>
+      <option value={asset.id}>
+        <%= asset.id %>. <%= asset.name %>
+      </option>
+    <% end %>
+  </select>
+</div>
+
+<div>
+  <input name="num_of_youth_pop" type="number" placeholder="num_of_youth_pop" />
+</div>
+
+
+<div>
+  <input type="checkbox" id="recieved" name="Recieved 1 OY"/>
+  <label for="recieved">Recieved 1 OY</label>
+</div>
+
+<div>
+  <.link navigate={~p"/check_asset/result"} > 
+    <.button id="button" disabled>Check an Asset</.button>
+  </.link>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const checkbox = document.getElementById('recieved');
+    const button = document.getElementById('button');
+
+    checkbox.addEventListener('change', function() {
+        button.disabled =  !button.disabled;
+    });
+});
+
+</script>
