@@ -485,4 +485,100 @@ defmodule Planet.Cosmos do
   def change_social_issue_solution(%SocialIssueSolution{} = social_issue_solution, attrs \\ %{}) do
     SocialIssueSolution.changeset(social_issue_solution, attrs)
   end
+
+  alias Planet.Cosmos.SocialIssueFlow
+
+  @doc """
+  Returns the list of social_issue_flows.
+
+  ## Examples
+
+      iex> list_social_issue_flows()
+      [%SocialIssueFlow{}, ...]
+
+  """
+  def list_social_issue_flows do
+    Repo.all(SocialIssueFlow)
+  end
+
+  @doc """
+  Gets a single social_issue_flow.
+
+  Raises `Ecto.NoResultsError` if the Social issue flow does not exist.
+
+  ## Examples
+
+      iex> get_social_issue_flow!(123)
+      %SocialIssueFlow{}
+
+      iex> get_social_issue_flow!(456)
+      ** (Ecto.NoResultsError)
+
+  """
+  def get_social_issue_flow!(id), do: Repo.get!(SocialIssueFlow, id)
+
+  @doc """
+  Creates a social_issue_flow.
+
+  ## Examples
+
+      iex> create_social_issue_flow(%{field: value})
+      {:ok, %SocialIssueFlow{}}
+
+      iex> create_social_issue_flow(%{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def create_social_issue_flow(attrs \\ %{}) do
+    %SocialIssueFlow{}
+    |> SocialIssueFlow.changeset(attrs)
+    |> Repo.insert()
+  end
+
+  @doc """
+  Updates a social_issue_flow.
+
+  ## Examples
+
+      iex> update_social_issue_flow(social_issue_flow, %{field: new_value})
+      {:ok, %SocialIssueFlow{}}
+
+      iex> update_social_issue_flow(social_issue_flow, %{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def update_social_issue_flow(%SocialIssueFlow{} = social_issue_flow, attrs) do
+    social_issue_flow
+    |> SocialIssueFlow.changeset(attrs)
+    |> Repo.update()
+  end
+
+  @doc """
+  Deletes a social_issue_flow.
+
+  ## Examples
+
+      iex> delete_social_issue_flow(social_issue_flow)
+      {:ok, %SocialIssueFlow{}}
+
+      iex> delete_social_issue_flow(social_issue_flow)
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def delete_social_issue_flow(%SocialIssueFlow{} = social_issue_flow) do
+    Repo.delete(social_issue_flow)
+  end
+
+  @doc """
+  Returns an `%Ecto.Changeset{}` for tracking social_issue_flow changes.
+
+  ## Examples
+
+      iex> change_social_issue_flow(social_issue_flow)
+      %Ecto.Changeset{data: %SocialIssueFlow{}}
+
+  """
+  def change_social_issue_flow(%SocialIssueFlow{} = social_issue_flow, attrs \\ %{}) do
+    SocialIssueFlow.changeset(social_issue_flow, attrs)
+  end
 end

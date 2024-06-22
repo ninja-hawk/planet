@@ -101,4 +101,21 @@ defmodule Planet.CosmosFixtures do
 
     social_issue_solution
   end
+
+  @doc """
+  Generate a social_issue_flow.
+  """
+  def social_issue_flow_fixture(attrs \\ %{}) do
+    {:ok, social_issue_flow} =
+      attrs
+      |> Enum.into(%{
+        deleted_at: ~U[2024-06-21 10:57:00Z],
+        is_yes: true,
+        next_social_issue_id: 42,
+        social_issue_id: 42
+      })
+      |> Planet.Cosmos.create_social_issue_flow()
+
+    social_issue_flow
+  end
 end

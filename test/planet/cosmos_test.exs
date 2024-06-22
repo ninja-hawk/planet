@@ -328,4 +328,64 @@ defmodule Planet.CosmosTest do
       assert %Ecto.Changeset{} = Cosmos.change_social_issue_solution(social_issue_solution)
     end
   end
+
+  describe "social_issue_flows" do
+    alias Planet.Cosmos.SocialIssueFlow
+
+    import Planet.CosmosFixtures
+
+    @invalid_attrs %{social_issue_id: nil, next_social_issue_id: nil, is_yes: nil, deleted_at: nil}
+
+    test "list_social_issue_flows/0 returns all social_issue_flows" do
+      social_issue_flow = social_issue_flow_fixture()
+      assert Cosmos.list_social_issue_flows() == [social_issue_flow]
+    end
+
+    test "get_social_issue_flow!/1 returns the social_issue_flow with given id" do
+      social_issue_flow = social_issue_flow_fixture()
+      assert Cosmos.get_social_issue_flow!(social_issue_flow.id) == social_issue_flow
+    end
+
+    test "create_social_issue_flow/1 with valid data creates a social_issue_flow" do
+      valid_attrs = %{social_issue_id: 42, next_social_issue_id: 42, is_yes: true, deleted_at: ~U[2024-06-21 10:57:00Z]}
+
+      assert {:ok, %SocialIssueFlow{} = social_issue_flow} = Cosmos.create_social_issue_flow(valid_attrs)
+      assert social_issue_flow.social_issue_id == 42
+      assert social_issue_flow.next_social_issue_id == 42
+      assert social_issue_flow.is_yes == true
+      assert social_issue_flow.deleted_at == ~U[2024-06-21 10:57:00Z]
+    end
+
+    test "create_social_issue_flow/1 with invalid data returns error changeset" do
+      assert {:error, %Ecto.Changeset{}} = Cosmos.create_social_issue_flow(@invalid_attrs)
+    end
+
+    test "update_social_issue_flow/2 with valid data updates the social_issue_flow" do
+      social_issue_flow = social_issue_flow_fixture()
+      update_attrs = %{social_issue_id: 43, next_social_issue_id: 43, is_yes: false, deleted_at: ~U[2024-06-22 10:57:00Z]}
+
+      assert {:ok, %SocialIssueFlow{} = social_issue_flow} = Cosmos.update_social_issue_flow(social_issue_flow, update_attrs)
+      assert social_issue_flow.social_issue_id == 43
+      assert social_issue_flow.next_social_issue_id == 43
+      assert social_issue_flow.is_yes == false
+      assert social_issue_flow.deleted_at == ~U[2024-06-22 10:57:00Z]
+    end
+
+    test "update_social_issue_flow/2 with invalid data returns error changeset" do
+      social_issue_flow = social_issue_flow_fixture()
+      assert {:error, %Ecto.Changeset{}} = Cosmos.update_social_issue_flow(social_issue_flow, @invalid_attrs)
+      assert social_issue_flow == Cosmos.get_social_issue_flow!(social_issue_flow.id)
+    end
+
+    test "delete_social_issue_flow/1 deletes the social_issue_flow" do
+      social_issue_flow = social_issue_flow_fixture()
+      assert {:ok, %SocialIssueFlow{}} = Cosmos.delete_social_issue_flow(social_issue_flow)
+      assert_raise Ecto.NoResultsError, fn -> Cosmos.get_social_issue_flow!(social_issue_flow.id) end
+    end
+
+    test "change_social_issue_flow/1 returns a social_issue_flow changeset" do
+      social_issue_flow = social_issue_flow_fixture()
+      assert %Ecto.Changeset{} = Cosmos.change_social_issue_flow(social_issue_flow)
+    end
+  end
 end
