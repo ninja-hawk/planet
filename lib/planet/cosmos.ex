@@ -293,4 +293,100 @@ defmodule Planet.Cosmos do
   def change_solution(%Solution{} = solution, attrs \\ %{}) do
     Solution.changeset(solution, attrs)
   end
+
+  alias Planet.Cosmos.SolutionAsset
+
+  @doc """
+  Returns the list of solution_assets.
+
+  ## Examples
+
+      iex> list_solution_assets()
+      [%SolutionAsset{}, ...]
+
+  """
+  def list_solution_assets do
+    Repo.all(SolutionAsset)
+  end
+
+  @doc """
+  Gets a single solution_asset.
+
+  Raises `Ecto.NoResultsError` if the Solution asset does not exist.
+
+  ## Examples
+
+      iex> get_solution_asset!(123)
+      %SolutionAsset{}
+
+      iex> get_solution_asset!(456)
+      ** (Ecto.NoResultsError)
+
+  """
+  def get_solution_asset!(id), do: Repo.get!(SolutionAsset, id)
+
+  @doc """
+  Creates a solution_asset.
+
+  ## Examples
+
+      iex> create_solution_asset(%{field: value})
+      {:ok, %SolutionAsset{}}
+
+      iex> create_solution_asset(%{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def create_solution_asset(attrs \\ %{}) do
+    %SolutionAsset{}
+    |> SolutionAsset.changeset(attrs)
+    |> Repo.insert()
+  end
+
+  @doc """
+  Updates a solution_asset.
+
+  ## Examples
+
+      iex> update_solution_asset(solution_asset, %{field: new_value})
+      {:ok, %SolutionAsset{}}
+
+      iex> update_solution_asset(solution_asset, %{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def update_solution_asset(%SolutionAsset{} = solution_asset, attrs) do
+    solution_asset
+    |> SolutionAsset.changeset(attrs)
+    |> Repo.update()
+  end
+
+  @doc """
+  Deletes a solution_asset.
+
+  ## Examples
+
+      iex> delete_solution_asset(solution_asset)
+      {:ok, %SolutionAsset{}}
+
+      iex> delete_solution_asset(solution_asset)
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def delete_solution_asset(%SolutionAsset{} = solution_asset) do
+    Repo.delete(solution_asset)
+  end
+
+  @doc """
+  Returns an `%Ecto.Changeset{}` for tracking solution_asset changes.
+
+  ## Examples
+
+      iex> change_solution_asset(solution_asset)
+      %Ecto.Changeset{data: %SolutionAsset{}}
+
+  """
+  def change_solution_asset(%SolutionAsset{} = solution_asset, attrs \\ %{}) do
+    SolutionAsset.changeset(solution_asset, attrs)
+  end
 end

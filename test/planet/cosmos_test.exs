@@ -216,4 +216,62 @@ defmodule Planet.CosmosTest do
       assert %Ecto.Changeset{} = Cosmos.change_solution(solution)
     end
   end
+
+  describe "solution_assets" do
+    alias Planet.Cosmos.SolutionAsset
+
+    import Planet.CosmosFixtures
+
+    @invalid_attrs %{solution_id: nil, asset_id: nil, deleted_at: nil}
+
+    test "list_solution_assets/0 returns all solution_assets" do
+      solution_asset = solution_asset_fixture()
+      assert Cosmos.list_solution_assets() == [solution_asset]
+    end
+
+    test "get_solution_asset!/1 returns the solution_asset with given id" do
+      solution_asset = solution_asset_fixture()
+      assert Cosmos.get_solution_asset!(solution_asset.id) == solution_asset
+    end
+
+    test "create_solution_asset/1 with valid data creates a solution_asset" do
+      valid_attrs = %{solution_id: 42, asset_id: 42, deleted_at: ~U[2024-06-21 08:05:00Z]}
+
+      assert {:ok, %SolutionAsset{} = solution_asset} = Cosmos.create_solution_asset(valid_attrs)
+      assert solution_asset.solution_id == 42
+      assert solution_asset.asset_id == 42
+      assert solution_asset.deleted_at == ~U[2024-06-21 08:05:00Z]
+    end
+
+    test "create_solution_asset/1 with invalid data returns error changeset" do
+      assert {:error, %Ecto.Changeset{}} = Cosmos.create_solution_asset(@invalid_attrs)
+    end
+
+    test "update_solution_asset/2 with valid data updates the solution_asset" do
+      solution_asset = solution_asset_fixture()
+      update_attrs = %{solution_id: 43, asset_id: 43, deleted_at: ~U[2024-06-22 08:05:00Z]}
+
+      assert {:ok, %SolutionAsset{} = solution_asset} = Cosmos.update_solution_asset(solution_asset, update_attrs)
+      assert solution_asset.solution_id == 43
+      assert solution_asset.asset_id == 43
+      assert solution_asset.deleted_at == ~U[2024-06-22 08:05:00Z]
+    end
+
+    test "update_solution_asset/2 with invalid data returns error changeset" do
+      solution_asset = solution_asset_fixture()
+      assert {:error, %Ecto.Changeset{}} = Cosmos.update_solution_asset(solution_asset, @invalid_attrs)
+      assert solution_asset == Cosmos.get_solution_asset!(solution_asset.id)
+    end
+
+    test "delete_solution_asset/1 deletes the solution_asset" do
+      solution_asset = solution_asset_fixture()
+      assert {:ok, %SolutionAsset{}} = Cosmos.delete_solution_asset(solution_asset)
+      assert_raise Ecto.NoResultsError, fn -> Cosmos.get_solution_asset!(solution_asset.id) end
+    end
+
+    test "change_solution_asset/1 returns a solution_asset changeset" do
+      solution_asset = solution_asset_fixture()
+      assert %Ecto.Changeset{} = Cosmos.change_solution_asset(solution_asset)
+    end
+  end
 end

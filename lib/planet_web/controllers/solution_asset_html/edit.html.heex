@@ -1,0 +1,8 @@
+<.header>
+  Edit Solution asset <%= @solution_asset.id %>
+  <:subtitle>Use this form to manage solution_asset records in your database.</:subtitle>
+</.header>
+
+<.solution_asset_form changeset={@changeset} action={~p"/solution_assets/#{@solution_asset}"} />
+
+<.back navigate={~p"/solution_assets"}>Back to solution_assets</.back>

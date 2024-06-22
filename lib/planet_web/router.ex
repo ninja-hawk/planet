@@ -35,6 +35,7 @@ defmodule PlanetWeb.Router do
       resources "/assets", AssetController
       resources "/social_issues", SocialIssueController
       resources "/solutions", SolutionController
+      resources "/solution_assets", SolutionAssetController
     end
 
 
