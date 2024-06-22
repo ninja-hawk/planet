@@ -21,7 +21,6 @@
   <:col :let={solution} label="Co2 effect"><%= solution.co2_effect %></:col>
   <:col :let={solution} label="Is choice"><%= solution.is_choice %></:col>
   <:col :let={solution} label="Comment"><%= solution.comment %></:col>
-  <:col :let={solution} label="Deleted at"><%= solution.deleted_at %></:col>
   <:action :let={solution}>
     <div class="sr-only">
       <.link navigate={~p"/solutions/#{solution}"}>Show</.link>

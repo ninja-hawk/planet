@@ -11,7 +11,6 @@
   <:col :let={social_issue_flow} label="Social issue"><%= social_issue_flow.social_issue_id %></:col>
   <:col :let={social_issue_flow} label="Next social issue"><%= social_issue_flow.next_social_issue_id %></:col>
   <:col :let={social_issue_flow} label="Is yes"><%= social_issue_flow.is_yes %></:col>
-  <:col :let={social_issue_flow} label="Deleted at"><%= social_issue_flow.deleted_at %></:col>
   <:action :let={social_issue_flow}>
     <div class="sr-only">
       <.link navigate={~p"/social_issue_flows/#{social_issue_flow}"}>Show</.link>

@@ -18,7 +18,6 @@
   <:col :let={social_issue} label="Is question"><%= social_issue.is_question %></:col>
   <:col :let={social_issue} label="Is last"><%= social_issue.is_last %></:col>
   <:col :let={social_issue} label="Tip"><%= social_issue.tip %></:col>
-  <:col :let={social_issue} label="Deleted at"><%= social_issue.deleted_at %></:col>
   <:action :let={social_issue}>
     <div class="sr-only">
       <.link navigate={~p"/social_issues/#{social_issue}"}>Show</.link>

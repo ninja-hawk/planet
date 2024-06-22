@@ -10,7 +10,6 @@
 <.table id="social_issue_solutions" rows={@social_issue_solutions} row_click={&JS.navigate(~p"/social_issue_solutions/#{&1}")}>
   <:col :let={social_issue_solution} label="Social Issue Id"><%= social_issue_solution.social_issue_id %></:col>
   <:col :let={social_issue_solution} label="Solution Id"><%= social_issue_solution.solution_id %></:col>
-  <:col :let={social_issue_solution} label="Deleted at"><%= social_issue_solution.deleted_at %></:col>
   <:action :let={social_issue_solution}>
     <div class="sr-only">
       <.link navigate={~p"/social_issue_solutions/#{social_issue_solution}"}>Show</.link>
