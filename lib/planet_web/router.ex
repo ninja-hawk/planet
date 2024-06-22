@@ -25,8 +25,8 @@ defmodule PlanetWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :home
-    get "/hello", HelloController, :index
-    get "/hello/:messenger", HelloController, :show
+    get "/check_asset", CheckAssetController, :index
+    get "/check_asset/:messenger", CheckAssetController, :show
     end
 
     scope "/", PlanetWeb do

@@ -1,12 +1,14 @@
-defmodule PlanetWeb.HelloController do
+defmodule PlanetWeb.CheckAssetController do
   use PlanetWeb, :controller
 
+  alias Planet.Cosmos
+  alias Planet.Cosmos.Asset
+
   def index(conn, _params) do
-    conn
-    |> put_flash(:info, "Welcome to Phoenix, from flash info!")
-    |> render(:index)
-    # render(conn, :index)
+    assets = Cosmos.list_assets()
+    render(conn, :index, assets: assets)
   end
+
   def show(conn, %{"messenger" => messenger}) do
     render(conn, :show, messenger: messenger)
   end

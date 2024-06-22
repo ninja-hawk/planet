@@ -1,0 +1,10 @@
+<h1>Assets</h1>
+
+<select name="asset1">
+  <%= for asset <- @assets do %>
+    <option>
+      <%= asset.id %>. 
+      <%= asset.name %>
+    </option>
+  <% end %>
+</select>
