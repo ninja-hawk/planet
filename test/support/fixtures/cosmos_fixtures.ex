@@ -87,4 +87,18 @@ defmodule Planet.CosmosFixtures do
 
     solution_asset
   end
+
+  @doc """
+  Generate a social_issue_solution.
+  """
+  def social_issue_solution_fixture(attrs \\ %{}) do
+    {:ok, social_issue_solution} =
+      attrs
+      |> Enum.into(%{
+        deleted_at: ~U[2024-06-21 09:21:00Z]
+      })
+      |> Planet.Cosmos.create_social_issue_solution()
+
+    social_issue_solution
+  end
 end

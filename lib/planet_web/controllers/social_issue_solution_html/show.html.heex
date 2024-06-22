@@ -1,0 +1,17 @@
+<.header>
+  Social issue solution <%= @social_issue_solution.id %>
+  <:subtitle>This is a social_issue_solution record from your database.</:subtitle>
+  <:actions>
+    <.link href={~p"/social_issue_solutions/#{@social_issue_solution}/edit"}>
+      <.button>Edit social_issue_solution</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.list>
+  <:item title="Social Issue Id"><%= @social_issue_solution.social_issue_id %></:item>
+  <:item title="Solution Id"><%= @social_issue_solution.solution_id %></:item>
+  <:item title="Deleted at"><%= @social_issue_solution.deleted_at %></:item>
+</.list>
+
+<.back navigate={~p"/social_issue_solutions"}>Back to social_issue_solutions</.back>
