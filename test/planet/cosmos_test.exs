@@ -274,4 +274,58 @@ defmodule Planet.CosmosTest do
       assert %Ecto.Changeset{} = Cosmos.change_solution_asset(solution_asset)
     end
   end
+
+  describe "social_issue_solutions" do
+    alias Planet.Cosmos.SocialIssueSolution
+
+    import Planet.CosmosFixtures
+
+    @invalid_attrs %{deleted_at: nil}
+
+    test "list_social_issue_solutions/0 returns all social_issue_solutions" do
+      social_issue_solution = social_issue_solution_fixture()
+      assert Cosmos.list_social_issue_solutions() == [social_issue_solution]
+    end
+
+    test "get_social_issue_solution!/1 returns the social_issue_solution with given id" do
+      social_issue_solution = social_issue_solution_fixture()
+      assert Cosmos.get_social_issue_solution!(social_issue_solution.id) == social_issue_solution
+    end
+
+    test "create_social_issue_solution/1 with valid data creates a social_issue_solution" do
+      valid_attrs = %{deleted_at: ~U[2024-06-21 09:21:00Z]}
+
+      assert {:ok, %SocialIssueSolution{} = social_issue_solution} = Cosmos.create_social_issue_solution(valid_attrs)
+      assert social_issue_solution.deleted_at == ~U[2024-06-21 09:21:00Z]
+    end
+
+    test "create_social_issue_solution/1 with invalid data returns error changeset" do
+      assert {:error, %Ecto.Changeset{}} = Cosmos.create_social_issue_solution(@invalid_attrs)
+    end
+
+    test "update_social_issue_solution/2 with valid data updates the social_issue_solution" do
+      social_issue_solution = social_issue_solution_fixture()
+      update_attrs = %{deleted_at: ~U[2024-06-22 09:21:00Z]}
+
+      assert {:ok, %SocialIssueSolution{} = social_issue_solution} = Cosmos.update_social_issue_solution(social_issue_solution, update_attrs)
+      assert social_issue_solution.deleted_at == ~U[2024-06-22 09:21:00Z]
+    end
+
+    test "update_social_issue_solution/2 with invalid data returns error changeset" do
+      social_issue_solution = social_issue_solution_fixture()
+      assert {:error, %Ecto.Changeset{}} = Cosmos.update_social_issue_solution(social_issue_solution, @invalid_attrs)
+      assert social_issue_solution == Cosmos.get_social_issue_solution!(social_issue_solution.id)
+    end
+
+    test "delete_social_issue_solution/1 deletes the social_issue_solution" do
+      social_issue_solution = social_issue_solution_fixture()
+      assert {:ok, %SocialIssueSolution{}} = Cosmos.delete_social_issue_solution(social_issue_solution)
+      assert_raise Ecto.NoResultsError, fn -> Cosmos.get_social_issue_solution!(social_issue_solution.id) end
+    end
+
+    test "change_social_issue_solution/1 returns a social_issue_solution changeset" do
+      social_issue_solution = social_issue_solution_fixture()
+      assert %Ecto.Changeset{} = Cosmos.change_social_issue_solution(social_issue_solution)
+    end
+  end
 end
