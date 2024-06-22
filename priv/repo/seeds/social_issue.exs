@@ -293,6 +293,19 @@ for issue <- [
       deleted_at: nil
   },
 
+  %{
+    name: "No Addition",
+    situation: "No more additional social issue. Keep solving other social issues.",
+    possible_solution: nil,
+    youth_effect: 0,
+    economic_growth_effect: 0,
+    co2_effect: 0,
+    is_question: false,
+    is_last: true,
+    tip: nil,
+    deleted_at: nil
+},
+
 ] do
 {:ok, _} = Planet.Cosmos.create_social_issue(issue)
 end
