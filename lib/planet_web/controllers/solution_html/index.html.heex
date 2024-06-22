@@ -8,6 +8,7 @@
 </.header>
 
 <.table id="solutions" rows={@solutions} row_click={&JS.navigate(~p"/solutions/#{&1}")}>
+  <:col :let={solution} label="Id"><%= solution.id %></:col>
   <:col :let={solution} label="Name"><%= solution.name %></:col>
   <:col :let={solution} label="Description"><%= solution.description %></:col>
   <:col :let={solution} label="Low capital input"><%= solution.low_capital_input %></:col>
@@ -20,7 +21,6 @@
   <:col :let={solution} label="Co2 effect"><%= solution.co2_effect %></:col>
   <:col :let={solution} label="Is choice"><%= solution.is_choice %></:col>
   <:col :let={solution} label="Comment"><%= solution.comment %></:col>
-  <:col :let={solution} label="Deleted at"><%= solution.deleted_at %></:col>
   <:action :let={solution}>
     <div class="sr-only">
       <.link navigate={~p"/solutions/#{solution}"}>Show</.link>

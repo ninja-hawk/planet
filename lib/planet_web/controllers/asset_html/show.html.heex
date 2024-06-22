@@ -9,12 +9,12 @@
 </.header>
 
 <.list>
+  <:item title="Id"><%= @asset.id %></:item>
   <:item title="Name"><%= @asset.name %></:item>
   <:item title="Description"><%= @asset.description %></:item>
   <:item title="Eco effect"><%= @asset.eco_effect %></:item>
   <:item title="Is skill"><%= @asset.is_skill %></:item>
   <:item title="Is duplicatable"><%= @asset.is_duplicatable %></:item>
-  <:item title="Deleted at"><%= @asset.deleted_at %></:item>
 </.list>
 
 <.back navigate={~p"/assets"}>Back to assets</.back>

@@ -9,6 +9,7 @@
 </.header>
 
 <.list>
+  <:item title="Id"><%= @solution.id %></:item>
   <:item title="Name"><%= @solution.name %></:item>
   <:item title="Description"><%= @solution.description %></:item>
   <:item title="Low capital input"><%= @solution.low_capital_input %></:item>
@@ -21,7 +22,6 @@
   <:item title="Co2 effect"><%= @solution.co2_effect %></:item>
   <:item title="Is choice"><%= @solution.is_choice %></:item>
   <:item title="Comment"><%= @solution.comment %></:item>
-  <:item title="Deleted at"><%= @solution.deleted_at %></:item>
 </.list>
 
 <.back navigate={~p"/solutions"}>Back to solutions</.back>

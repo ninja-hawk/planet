@@ -8,12 +8,12 @@
 </.header>
 
 <.table id="assets" rows={@assets} row_click={&JS.navigate(~p"/assets/#{&1}")}>
+  <:col :let={asset} label="Id"><%= asset.id %></:col>
   <:col :let={asset} label="Name"><%= asset.name %></:col>
   <:col :let={asset} label="Description"><%= asset.description %></:col>
   <:col :let={asset} label="Eco effect"><%= asset.eco_effect %></:col>
   <:col :let={asset} label="Is skill"><%= asset.is_skill %></:col>
   <:col :let={asset} label="Is duplicatable"><%= asset.is_duplicatable %></:col>
-  <:col :let={asset} label="Deleted at"><%= asset.deleted_at %></:col>
   <:action :let={asset}>
     <div class="sr-only">
       <.link navigate={~p"/assets/#{asset}"}>Show</.link>
