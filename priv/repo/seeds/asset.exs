@@ -34,7 +34,7 @@ for asset <- [
     deleted_at: nil
   },
   %{
-    name: "Knoweldge on Power Plant",
+    name: "Knowledge on Power Plant",
     description: "Experties on harvesting electricity and, building a basic power grid and a plantation.",
     is_skill: true,
     eco_effect: 0,
@@ -50,7 +50,7 @@ for asset <- [
     deleted_at: nil
   },
   %{
-    name: "Know-how of health Care",
+    name: "Knowledge of healthcare",
     description: "Experties on health care system. Affodable health care allows your population to be haelthier life and work in full potential.",
     is_skill: true,
     eco_effect: 0,
