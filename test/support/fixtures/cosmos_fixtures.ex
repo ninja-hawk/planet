@@ -71,4 +71,20 @@ defmodule Planet.CosmosFixtures do
 
     solution
   end
+
+  @doc """
+  Generate a solution_asset.
+  """
+  def solution_asset_fixture(attrs \\ %{}) do
+    {:ok, solution_asset} =
+      attrs
+      |> Enum.into(%{
+        asset_id: 42,
+        deleted_at: ~U[2024-06-21 08:05:00Z],
+        solution_id: 42
+      })
+      |> Planet.Cosmos.create_solution_asset()
+
+    solution_asset
+  end
 end

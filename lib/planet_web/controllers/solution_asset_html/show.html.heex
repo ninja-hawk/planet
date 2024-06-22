@@ -1,0 +1,17 @@
+<.header>
+  Solution asset <%= @solution_asset.id %>
+  <:subtitle>This is a solution_asset record from your database.</:subtitle>
+  <:actions>
+    <.link href={~p"/solution_assets/#{@solution_asset}/edit"}>
+      <.button>Edit solution_asset</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.list>
+  <:item title="Solution"><%= @solution_asset.solution_id %></:item>
+  <:item title="Asset"><%= @solution_asset.asset_id %></:item>
+  <:item title="Deleted at"><%= @solution_asset.deleted_at %></:item>
+</.list>
+
+<.back navigate={~p"/solution_assets"}>Back to solution_assets</.back>
