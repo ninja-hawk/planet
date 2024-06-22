@@ -1,0 +1,26 @@
+<.header>
+  Listing Social issue flows
+  <:actions>
+    <.link href={~p"/social_issue_flows/new"}>
+      <.button>New Social issue flow</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.table id="social_issue_flows" rows={@social_issue_flows} row_click={&JS.navigate(~p"/social_issue_flows/#{&1}")}>
+  <:col :let={social_issue_flow} label="Social issue"><%= social_issue_flow.social_issue_id %></:col>
+  <:col :let={social_issue_flow} label="Next social issue"><%= social_issue_flow.next_social_issue_id %></:col>
+  <:col :let={social_issue_flow} label="Is yes"><%= social_issue_flow.is_yes %></:col>
+  <:col :let={social_issue_flow} label="Deleted at"><%= social_issue_flow.deleted_at %></:col>
+  <:action :let={social_issue_flow}>
+    <div class="sr-only">
+      <.link navigate={~p"/social_issue_flows/#{social_issue_flow}"}>Show</.link>
+    </div>
+    <.link navigate={~p"/social_issue_flows/#{social_issue_flow}/edit"}>Edit</.link>
+  </:action>
+  <:action :let={social_issue_flow}>
+    <.link href={~p"/social_issue_flows/#{social_issue_flow}"} method="delete" data-confirm="Are you sure?">
+      Delete
+    </.link>
+  </:action>
+</.table>

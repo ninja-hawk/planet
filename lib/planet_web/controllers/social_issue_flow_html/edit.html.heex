@@ -1,0 +1,8 @@
+<.header>
+  Edit Social issue flow <%= @social_issue_flow.id %>
+  <:subtitle>Use this form to manage social_issue_flow records in your database.</:subtitle>
+</.header>
+
+<.social_issue_flow_form changeset={@changeset} action={~p"/social_issue_flows/#{@social_issue_flow}"} />
+
+<.back navigate={~p"/social_issue_flows"}>Back to social_issue_flows</.back>
