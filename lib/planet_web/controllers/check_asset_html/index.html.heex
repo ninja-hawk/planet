@@ -7,20 +7,33 @@
   </:actions>
 </.header>
 
-<form action={@action} method="post">
-  <div>
-    <select name="social_issue_id" class="form-control">
-      <option value="">Select a Social Issue</option>
-      <%= for social_issue <- @social_issues do %>
-        <option value={social_issue.id}>
-          <%= social_issue.id %>. <%= social_issue.name %>
-        </option>
-      <% end %>
-    </select>
-  </div>
+<.form action={@action} method="post" class="max-w-sm">
+  <.label >Social Issue</.label>
+    <div>
+      <select name="social_issue_id" class="form-control block mb-2 text-sm font-medium text-gray-900" required>
+        <option value="">Select a Social Issue</option>
+        <%= for social_issue <- @social_issues do %>
+          <option value={social_issue.id}>
+            <%= social_issue.id %>. <%= social_issue.name %>
+          </option>
+        <% end %>
+      </select>
+    </div>
+
+  <.label >Asset</.label>
+    <div>
+      <select name="assets[]" class="form-control block mb-2 text-sm font-medium text-gray-900" required>
+        <option value="">Select an Asset</option>
+        <%= for asset <- @assets do %>
+          <option value={asset.id}>
+            <%= asset.id %>. <%= asset.name %>
+          </option>
+        <% end %>
+      </select>
+    </div>
 
   <div>
-    <select name="assets[]" class="form-control">
+    <select name="assets[]" class="form-control block mb-2 text-sm font-medium text-gray-900">
       <option value="">Select an Asset</option>
       <%= for asset <- @assets do %>
         <option value={asset.id}>
@@ -30,53 +43,22 @@
     </select>
   </div>
 
+  <.label >The Number of Youthful Population</.label>
   <div>
-    <select name="assets[]" class="form-control">
-      <option value="">Select an Asset</option>
-      <%= for asset <- @assets do %>
-        <option value={asset.id}>
-          <%= asset.id %>. <%= asset.name %>
-        </option>
-      <% end %>
-    </select>
-  </div>
-
-  <div>
-    <select name="assets[]" class="form-control">
-      <option value="">Select an Asset</option>
-      <%= for asset <- @assets do %>
-        <option value={asset.id}>
-          <%= asset.id %>. <%= asset.name %>
-        </option>
-      <% end %>
-    </select>
-  </div>
-
-  <div>
-    <select name="assets[]" class="form-control">
-      <option value="">Select an Asset</option>
-      <%= for asset <- @assets do %>
-        <option value={asset.id}>
-          <%= asset.id %>. <%= asset.name %>
-        </option>
-      <% end %>
-    </select>
-  </div>
-
-  <div>
-    <input name="num_of_youth_pop" type="number" placeholder="num_of_youth_pop" />
+    <input name="num_of_youth_pop" type="number" placeholder="num_of_youth_pop" class="form-control block mb-2 text-sm font-medium text-gray-900" />
   </div>
 
 
   <div>
-    <input type="checkbox" id="recieved" name="Recieved 1 OY"/>
     <label for="recieved">Recieved 1 OY</label>
+    <input type="checkbox" id="recieved" name="Recieved 1 OY"/>
   </div>
 
   <div>
     <.button type="submit" id="button" disabled>Check an Asset</.button>
   </div>
-</form>
+</.form>
+
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {

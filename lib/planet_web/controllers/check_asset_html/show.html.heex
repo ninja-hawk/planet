@@ -2,10 +2,30 @@
   Asset Check Result
 </.header>
 
-<%= @social_issue_id %>
-<%= @assets %>
+<script>
+console.log("Test");
+console.log("<%= @social_issue.situation %>");
+
+
+</script>
+
+<%= for solution <- @social_issue.solutions do%>
+<%= solution.id %>
+<%= solution.name %>
+<br/>
+<%= for asset <- solution.assets do%>
+<%= asset.id %>
+<%= asset.name %>
+<% end %>
+<hr/>
+<% end %>
+
+
+<%!-- <%= @asset_1 %>
+<%= @asset_2 %> --%>
+
 <%= @num_of_youth_pop %>
-<div>Your Solution is "Clean Water Facility"</div>
+<div><%=  @social_issue.name %></div>
 <div>The ID is 1</div>
 
 
