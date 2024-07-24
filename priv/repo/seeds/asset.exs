@@ -26,7 +26,7 @@ for asset <- [
     deleted_at: nil
   },
   %{
-    name: "Engenner",
+    name: "Engineer",
     description: "These young men/women are the source of innovation. Hence, having them can allow your nation to access technologies and knowledge you did not have, such as civil engeering for your power grid",
     is_skill: false,
     eco_effect: 0,
