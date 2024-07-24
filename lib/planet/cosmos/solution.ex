@@ -1,6 +1,7 @@
 defmodule Planet.Cosmos.Solution do
   use Ecto.Schema
   import Ecto.Changeset
+  alias Planet.Cosmos.Asset
 
   schema "solutions" do
     field :name, :string
@@ -16,6 +17,7 @@ defmodule Planet.Cosmos.Solution do
     field :co2_effect, :integer
     field :is_choice, :boolean, default: false
     field :deleted_at, :utc_datetime
+    many_to_many :assets, Asset, join_through: "solution_assets", on_replace: :delete
 
     timestamps(type: :utc_datetime)
   end
