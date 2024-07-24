@@ -22,7 +22,7 @@
 
   <.label >Asset</.label>
     <div>
-      <select name="assets[]" class="form-control block mb-2 text-sm font-medium text-gray-900" required>
+      <select name="assets[]" class="form-control block mb-2 text-sm font-medium text-gray-900">
         <option value="">Select an Asset</option>
         <%= for asset <- @assets do %>
           <option value={asset.id}>
