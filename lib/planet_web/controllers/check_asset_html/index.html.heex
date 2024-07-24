@@ -22,7 +22,7 @@
 
   <.label >Asset</.label>
     <div>
-      <select name="asset_1" class="form-control block mb-2 text-sm font-medium text-gray-900" required>
+      <select name="assets[]" class="form-control block mb-2 text-sm font-medium text-gray-900" required>
         <option value="">Select an Asset</option>
         <%= for asset <- @assets do %>
           <option value={asset.id}>
@@ -33,8 +33,8 @@
     </div>
 
   <div>
-    <select name="asset_2" class="form-control block mb-2 text-sm font-medium text-gray-900">
-      <option value="">Select an Asset</option>
+    <select name="assets[]" class="form-control block mb-2 text-sm font-medium text-gray-900">
+      <option value="" selected >Select an Asset</option>
       <%= for asset <- @assets do %>
         <option value={asset.id}>
           <%= asset.id %>. <%= asset.name %>
@@ -49,7 +49,7 @@
   </div>
 
 
-  <div>
+  <div class="form-control block mb-2 text-sm font-medium text-gray-900">
     <label for="recieved">Recieved 1 OY</label>
     <input type="checkbox" id="recieved" name="Recieved 1 OY"/>
   </div>

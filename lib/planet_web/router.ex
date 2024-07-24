@@ -35,7 +35,6 @@ defmodule PlanetWeb.Router do
 
     get "/", PageController, :home
     get "/check_asset", CheckAssetController, :index
-    get "/check_asset/result", CheckAssetController, :show
     # get "/check_asset/:messenger", CheckAssetController, :show
   end
 

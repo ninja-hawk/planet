@@ -10,19 +10,44 @@ defmodule PlanetWeb.CheckAssetController do
     render(conn, :index, assets: assets, social_issues: social_issues, action: action)
   end
 
-  def show(conn, %{"social_issue_id" => social_issue_id, "asset_1" => asset_1, "asset_2" => asset_2, "num_of_youth_pop" => num_of_youth_pop}) do
+  def check(conn, %{"social_issue_id" => social_issue_id, "assets" => assets, "num_of_youth_pop" => num_of_youth_pop}) do
     social_issue = Cosmos.get_social_issue!(social_issue_id)
-    conn
-    |> put_flash(:info, "Correct!")
-    |> render(:show, social_issue_id: social_issue_id, social_issue: social_issue, asset_1: asset_1, asset_2: asset_2, num_of_youth_pop: num_of_youth_pop)
-  end
 
-  def check(conn, %{"social_issue_id" => social_issue_id, "asset_1" => asset_1, "asset_2" => asset_2, "num_of_youth_pop" => num_of_youth_pop}) do
-    social_issue = Cosmos.get_social_issue!(social_issue_id)
-    Enum.each(social_issue.solutions, fn solution ->
-      IO.inspect(solution)
+
+    assets = assets
+    |> Enum.filter(&(&1 != "")) # Ignore ""
+    |> Enum.map(&String.to_integer/1) # Convert into integer
+
+    assets = if num_of_youth_pop >= 3 do
+      assets ++ [11] # MAGIC NUMBER Asset.id = 11 = Youth Pop*3
+    else
+      assets
+    end
+
+    IO.puts("Selected Assets:")
+    IO.inspect(assets)
+    matched_solutions = Enum.filter(social_issue.solutions, fn solution ->
+      solution_assets_ids = Enum.map(solution.assets, &(&1.id))
+      IO.puts("Solution Assets:")
+      IO.inspect(solution_assets_ids)
+      case assets do
+        [a1, a2, a3] -> (a1 in solution_assets_ids and a2 in solution_assets_ids) or (a2 in solution_assets_ids and a3 in solution_assets_ids) or (a1 in solution_assets_ids and a3 in solution_assets_ids)
+        or (a1 in solution_assets_ids and length(solution_assets_ids) == 1) or ( a2 in solution_assets_ids and length(solution_assets_ids) == 1) or ( a3 in solution_assets_ids and length(solution_assets_ids) == 1)
+        [a1, a2] -> (a1 in solution_assets_ids and a2 in solution_assets_ids) or (a1 in solution_assets_ids and length(solution_assets_ids) == 1) or ( a2 in solution_assets_ids and length(solution_assets_ids) == 1)
+        [a1] -> a1 in solution_assets_ids and length(solution_assets_ids) == 1
+        _ -> false
+      end
     end)
-    IO.puts("Received params: #{social_issue.situation}")
-    render(conn, :show, social_issue_id: social_issue_id, social_issue: social_issue, asset_1: asset_1, asset_2: asset_2, num_of_youth_pop: num_of_youth_pop)
+
+
+    match_solution = matched_solutions
+    |> Enum.max_by(&length(&1.assets), fn -> nil end)
+    IO.puts("Matched Solution:")
+    IO.inspect(match_solution)
+
+    case match_solution do
+      nil -> conn |> put_flash(:error, "No matching solutions found.") |> redirect(to: "/")
+      _ -> conn |> put_flash(:info, "Correct!") |> render(:show, social_issue_name: social_issue.name, solution: match_solution, assets: assets, num_of_youth_pop: num_of_youth_pop)
+    end
   end
 end
