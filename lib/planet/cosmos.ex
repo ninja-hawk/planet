@@ -7,6 +7,8 @@ defmodule Planet.Cosmos do
   alias Planet.Repo
 
   alias Planet.Cosmos.Asset
+  alias Planet.Cosmos.SocialIssue
+  alias Planet.Cosmos.Solution
 
   @doc """
   Returns the list of assets.
@@ -131,7 +133,9 @@ defmodule Planet.Cosmos do
       ** (Ecto.NoResultsError)
 
   """
-  def get_social_issue!(id), do: Repo.get!(SocialIssue, id)
+  def get_social_issue!(id) do
+    SocialIssue |> Repo.get!(id) |> Repo.preload(solutions: :assets)
+  end
 
   @doc """
   Creates a social_issue.
