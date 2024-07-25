@@ -13,6 +13,15 @@ defmodule PlanetWeb.Router do
     plug :fetch_current_user
   end
 
+  pipeline :browser_without_product do
+    plug :accepts, ["html"]
+    plug :fetch_session
+    plug :fetch_live_flash
+    plug :put_root_layout, html: {PlanetWeb.Layouts, :root}
+    plug :put_secure_browser_headers
+    plug :fetch_current_user
+  end
+
   pipeline :api do
     plug :accepts, ["json"]
   end
@@ -25,26 +34,26 @@ defmodule PlanetWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :home
-    get "/hello", HelloController, :index
-    get "/hello/:messenger", HelloController, :show
-    end
+    get "/check_asset", CheckAssetController, :index
+    # get "/check_asset/:messenger", CheckAssetController, :show
+  end
 
-    scope "/", PlanetWeb do
-      pipe_through [:browser, :admin]
+  scope "/", PlanetWeb do
+    pipe_through [:browser, :admin]
 
-      resources "/assets", AssetController
-      resources "/social_issues", SocialIssueController
-      resources "/solutions", SolutionController
-      resources "/solution_assets", SolutionAssetController
-      resources "/social_issue_solutions", SocialIssueSolutionController
-      resources "/social_issue_flows", SocialIssueFlowController
-    end
+    resources "/assets", AssetController
+    resources "/social_issues", SocialIssueController
+    resources "/solutions", SolutionController
+    resources "/solution_assets", SolutionAssetController
+    resources "/social_issue_solutions", SocialIssueSolutionController
+    resources "/social_issue_flows", SocialIssueFlowController
+  end
 
 
-  # Other scopes may use custom stacks.
-  # scope "/api", PlanetWeb do
-  #   pipe_through :api
-  # end
+  scope "/", PlanetWeb do
+    pipe_through :browser_without_product
+    post "/check_asset/check", CheckAssetController, :check
+  end
 
   # Enable LiveDashboard and Swoosh mailbox preview in development
   if Application.compile_env(:planet, :dev_routes) do

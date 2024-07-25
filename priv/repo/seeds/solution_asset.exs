@@ -11,6 +11,7 @@ for {solution_id, asset_id, deleted_at} <- [
   {6, 6, nil},
   {6, 9, nil},
   {7, 5, nil},
+  {8, 4, nil},
   {8, 5, nil},
   {9, 5, nil},
   {9, 8, nil},

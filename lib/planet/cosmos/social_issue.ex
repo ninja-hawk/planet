@@ -1,6 +1,7 @@
 defmodule Planet.Cosmos.SocialIssue do
   use Ecto.Schema
   import Ecto.Changeset
+  alias Planet.Cosmos.Solution
 
   schema "social_issues" do
     field :name, :string
@@ -13,6 +14,8 @@ defmodule Planet.Cosmos.SocialIssue do
     field :is_last, :boolean, default: false
     field :tip, :string
     field :deleted_at, :utc_datetime
+
+    many_to_many :solutions, Solution, join_through: "social_issue_solutions", on_replace: :delete
 
     timestamps(type: :utc_datetime)
   end
