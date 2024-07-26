@@ -11,7 +11,7 @@
   <.label >Social Issue</.label>
     <div>
       <select name="social_issue_id" class="form-control block mb-2 text-sm font-medium text-gray-900" required>
-        <option value="">Select a Social Issue</option>
+        <option value="0">Select a Social Issue</option>
         <%= for social_issue <- @social_issues do %>
           <option value={social_issue.id}>
             <%= social_issue.id %>. <%= social_issue.name %>
@@ -23,7 +23,7 @@
   <.label >Asset</.label>
     <div>
       <select name="assets[]" class="form-control block mb-2 text-sm font-medium text-gray-900">
-        <option value="">Select an Asset</option>
+        <option value="0">Select an Asset</option>
         <%= for asset <- @assets do %>
           <option value={asset.id}>
             <%= asset.id %>. <%= asset.name %>
@@ -34,7 +34,7 @@
 
   <div>
     <select name="assets[]" class="form-control block mb-2 text-sm font-medium text-gray-900">
-      <option value="" selected >Select an Asset</option>
+      <option value="0" selected >Select an Asset</option>
       <%= for asset <- @assets do %>
         <option value={asset.id}>
           <%= asset.id %>. <%= asset.name %>
@@ -45,7 +45,7 @@
 
   <.label >The Number of Youthful Population</.label>
   <div>
-    <input name="num_of_youth_pop" type="number" placeholder="num_of_youth_pop" class="form-control block mb-2 text-sm font-medium text-gray-900" />
+    <input name="num_of_youth_pop" type="number" placeholder="num_of_youth_pop" value="0" min="0" class="form-control block mb-2 text-sm font-medium text-gray-900" />
   </div>
 
 
