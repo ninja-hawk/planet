@@ -1,0 +1,76 @@
+<.header>
+  Select an Asset
+  <:actions>
+    <.link href={~p"/"}>
+      <.button>Back to Home</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.label>Solution</.label>
+<div>
+  <select name="solution_id" id="solution" class="form-control block mb-2 text-sm font-medium text-gray-900" required>
+    <option value="0">Select a Solution</option>
+    <%= for solution <- @solutions do %>
+      <option value={solution.id}>
+        <%= solution.id %>. <%= solution.name %>
+      </option>
+    <% end %>
+  </select>
+</div>
+
+<table class="table-auto w-full">
+  <thead>
+    <tr>
+      <th>Capital Input</th>
+      <th>Return</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td id="low_capital_input_display" class="border px-4 py-2"></td>
+      <td id="low_capital_return_display" class="border px-4 py-2"></td>
+    </tr>
+    <tr>
+      <td id="middle_capital_input_display" class="border px-4 py-2"></td>
+      <td id="middle_capital_return_display" class="border px-4 py-2"></td>
+    </tr>
+    <tr>
+      <td id="high_capital_input_display" class="border px-4 py-2"></td>
+      <td id="high_capital_return_display" class="border px-4 py-2"></td>
+    </tr>
+  </tbody>
+</table>
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const solutions = <%= raw(@solutions |> Enum.map(&%{id: &1.id, low: &1.low_capital_input, middle: &1.middle_capital_input, high: &1.high_capital_input, low_return: &1.low_return, middle_return: &1.middle_return, high_return: &1.high_return}) |> Jason.encode!) %>;
+    const solutionSelect = document.getElementById('solution');
+    const lowCapitalDisplay = document.getElementById('low_capital_input_display');
+    const middleCapitalDisplay = document.getElementById('middle_capital_input_display');
+    const highCapitalDisplay = document.getElementById('high_capital_input_display');
+    const lowReturnDisplay = document.getElementById('low_capital_return_display');
+    const middleReturnDisplay = document.getElementById('middle_capital_return_display');
+    const highReturnDisplay = document.getElementById('high_capital_return_display');
+
+    solutionSelect.addEventListener('change', function() {
+      const selectedSolution = solutions.find(sol => sol.id == this.value);
+      if (selectedSolution) {
+        lowCapitalDisplay.textContent = selectedSolution.low;
+        middleCapitalDisplay.textContent = selectedSolution.middle;
+        highCapitalDisplay.textContent = selectedSolution.high;
+        lowReturnDisplay.textContent = selectedSolution.low_return;
+        middleReturnDisplay.textContent = selectedSolution.middle_return;
+        highReturnDisplay.textContent = selectedSolution.high_return;
+      } else {
+        lowCapitalDisplay.textContent = '';
+        middleCapitalDisplay.textContent = '';
+        highCapitalDisplay.textContent = '';
+        lowReturnDisplay.textContent = '';
+        middleReturnDisplay.textContent = '';
+        highReturnDisplay.textContent = '';
+      }
+    });
+  });
+</script>
