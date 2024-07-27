@@ -51,7 +51,7 @@ defmodule PlanetWeb.CalculationController do
     social_issue_related = Enum.reduce(social_issues, initial_social_issue_related, fn social_issue_id, acc ->
       id = String.to_integer(social_issue_id)
 
-      case Cosmos.get_social_issue(id) do
+      case Cosmos.try_social_issue(id) do
         {:ok, social_issue} ->
           %{
             acc |
@@ -71,7 +71,7 @@ defmodule PlanetWeb.CalculationController do
     solution_related = Enum.reduce(solutions, initial_solution_related, fn solution_id, acc ->
       id = String.to_integer(solution_id)
 
-      case Cosmos.get_solution(id) do
+      case Cosmos.try_solution(id) do
         {:ok, solution} ->
           %{
             acc |
