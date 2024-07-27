@@ -1,0 +1,126 @@
+<.header>
+  Calculation
+  <:actions>
+    <.link href={~p"/"}>
+      <.button>Back to Home</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.form action={@action} method="post" class="max-w-sm">
+  <.label >Nation Type</.label>
+      <div>
+      <select name="nation_type" class="form-control block mb-2 text-sm font-medium text-gray-900" required>
+        <option value="">Select a Nation Type</option>
+        <option value="A">A</option>
+        <option value="B">B</option>
+        <option value="C">C</option>
+        <option value="D">D</option>
+      </select>
+    </div>
+  <.label >Turn Number</.label>
+      <div>
+      <select name="turn_number" class="form-control block mb-2 text-sm font-medium text-gray-900" required>
+        <option value="0">Select a Turn Number</option>
+        <option value="1">#1</option>
+        <option value="2">#2</option>
+        <option value="3">#3</option>
+      </select>
+    </div>
+  <.label >Existing Social Issue</.label>
+    <div>
+      <select name="social_issues[]" class="form-control block mb-2 text-sm font-medium text-gray-900">
+        <option value="0">Select a Social Issue</option>
+        <%= for social_issue <- @social_issues do %>
+          <option value={social_issue.id}>
+            <%= social_issue.id %>. <%= social_issue.name %>
+          </option>
+        <% end %>
+      </select>
+    </div>
+    <div>
+      <select name="social_issues[]" class="form-control block mb-2 text-sm font-medium text-gray-900">
+        <option value="0">Select a Social Issue</option>
+        <%= for social_issue <- @social_issues do %>
+          <option value={social_issue.id}>
+            <%= social_issue.id %>. <%= social_issue.name %>
+          </option>
+        <% end %>
+      </select>
+    </div>
+    <div>
+      <select name="social_issues[]" class="form-control block mb-2 text-sm font-medium text-gray-900">
+        <option value="0">Select a Social Issue</option>
+        <%= for social_issue <- @social_issues do %>
+          <option value={social_issue.id}>
+            <%= social_issue.id %>. <%= social_issue.name %>
+          </option>
+        <% end %>
+      </select>
+    </div>
+
+
+  <.label>Solved Solution(Multiple Select)</.label>
+  <div id="solution-container" class="space-y-2">
+    <div class="flex items-center space-x-2">
+      <select name="solutions[]" id="custom-select" class="form-control block mb-2 text-sm font-medium text-gray-900" size="20" multiple required>
+        <option value="0">0. No Solved Solution</option>
+        <%= for solution <- @solutions do %>
+          <option value={solution.id}>
+            <%= solution.id %>. <%= solution.name %>
+          </option>
+        <% end %>
+      </select>
+    </div>
+  </div>
+
+
+  <.label >Sum of Return of Investment for Solution</.label>
+  <div>
+    <input name="sum_of_roi" type="number" placeholder="sum_of_roi" value="0" min="0" class="form-control block mb-2 text-sm font-medium text-gray-900" />
+  </div>
+  <.label >The Number of Youthful Population</.label>
+  <div>
+    <input name="num_of_youth_pop" type="number" placeholder="num_of_youth_pop" value="0" min="0" class="form-control block mb-2 text-sm font-medium text-gray-900" />
+  </div>
+  <.label >The Number of Educated Labour Force</.label>
+  <div>
+    <input name="num_of_educated_pop" type="number" placeholder="num_of_educated_pop" value="0" min="0" class="form-control block mb-2 text-sm font-medium text-gray-900" />
+  </div>
+
+
+  <div>
+    <.button type="submit" id="button">Check an Asset</.button>
+  </div>
+</.form>
+
+
+<script>
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  const selectBox = document.getElementById('custom-select');
+
+  selectBox.addEventListener('mousedown', (event) => {
+    event.preventDefault();
+    
+    const option = event.target;
+    if (option.tagName === 'OPTION') {
+      if (option.selected) {
+        option.selected = false;
+      } else {
+        option.selected = true;
+      }
+    }
+  });
+
+  selectBox.addEventListener('mousemove', (event) => {
+    if (event.buttons === 1) {
+      const option = document.elementFromPoint(event.clientX, event.clientY);
+      if (option.tagName === 'OPTION' && option.parentElement === selectBox) {
+        option.selected = !option.selected;
+      }
+    }
+  });
+});
+</script>
