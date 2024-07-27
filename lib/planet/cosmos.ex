@@ -133,8 +133,11 @@ defmodule Planet.Cosmos do
       ** (Ecto.NoResultsError)
 
   """
-  def get_social_issue!(id) do
-    SocialIssue |> Repo.get!(id) |> Repo.preload(solutions: :assets)
+  def get_social_issue(id) do
+    case Repo.get(SocialIssue, id) |> Repo.preload(solutions: :assets) do
+      nil -> {:error, :not_found}
+      social_issue -> {:ok, social_issue}
+    end
   end
 
   @doc """
@@ -231,7 +234,12 @@ defmodule Planet.Cosmos do
       ** (Ecto.NoResultsError)
 
   """
-  def get_solution!(id), do: Repo.get!(Solution, id)
+  def get_solution(id) do
+    case Repo.get(Solution, id) do
+      nil -> {:error, :not_found}
+      solution -> {:ok, solution}
+    end
+  end
 
   @doc """
   Creates a solution.

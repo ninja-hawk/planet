@@ -1,0 +1,35 @@
+<.header>
+  Asset Check Result
+</.header>
+
+<script>
+
+</script>
+
+
+
+
+
+<div class="form-control block mb-2 text-sm font-medium text-gray-900" >Nation Type: <%=  @nation_type %> </div>
+<div class="form-control block mb-2 text-sm font-medium text-gray-900" >Turn Number: #<%=  @turn_number %> </div>
+<div class="form-control block mb-2 text-sm font-medium text-gray-900" >Social Issues: <%=  inspect(@social_issues, charlists: :as_list) %> </div>
+<div class="form-control block mb-2 text-sm font-medium text-gray-900" >Solutions: <%=  inspect(@solutions, charlists: :as_list) %> </div>
+<div class="form-control block mb-2 text-sm font-medium text-gray-900" >The Number of Youthful Population: <%=  @num_of_youth_pop %> </div>
+<div class="form-control block mb-2 text-sm font-medium text-gray-900" >The Number of Educated Labour Force: <%=  @num_of_educated_pop %> </div>
+<hr/>
+<div class="form-control block mb-2 text-sm font-medium text-gray-900" ><b>Total Economic Growth: <%=  @total_economic_growth %> </b></div>
+<hr/>
+<div class="form-control block mb-2 text-sm font-medium text-gray-900" >y_n: <%=  @y_n %> </div>
+<div class="form-control block mb-2 text-sm font-medium text-gray-900" >y_s: <%=  @y_s %> </div>
+<div class="form-control block mb-2 text-sm font-medium text-gray-900" >m_minus: <%=  @m_minus %> </div>
+<div class="form-control block mb-2 text-sm font-medium text-gray-900" >c: <%=  @c %> </div>
+<div class="form-control block mb-2 text-sm font-medium text-gray-900" >e_i: <%=  @e_i %> </div>
+<div class="form-control block mb-2 text-sm font-medium text-gray-900" >e_s: <%=  @e_s %> </div>
+
+
+
+<div>
+    <.link href={~p"/"}>
+      <.button>Back to Home</.button>
+    </.link>
+</div>
