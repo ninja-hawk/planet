@@ -55,6 +55,7 @@ defmodule PlanetWeb.Router do
   scope "/", PlanetWeb do
     pipe_through :browser_without_product
     post "/check_asset/check", CheckAssetController, :check
+    post "/investment/next_social_issue", InvestmentController, :find
     post "/calculation/result", CalculationController, :calculate
   end
 
