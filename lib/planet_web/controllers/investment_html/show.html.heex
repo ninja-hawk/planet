@@ -1,0 +1,63 @@
+<.header>
+  Next Social Issue
+</.header>
+
+<script>
+
+</script>
+
+<.label>Given Social Issue</.label>
+<div class="form-control block mb-2 text-sm font-medium text-gray-900" >
+  <%=  @social_issue.id %>. <%=  @social_issue.name %>
+</div>
+
+<.label>Next Social Issues</.label>
+<hr/>
+<%= for social_issue <- @social_issue.social_issue_flows do%>
+  <div class="form-control block mb-2 text-sm font-medium text-gray-900" >
+    <div>
+      <%= if @social_issue.is_question do %>
+        <%= if social_issue.is_yes do %>
+            If answered <b> YES </b>
+        <%= else %>
+            If answered <b> NO </b>
+        <% end %>
+      <% end %>
+    </div>
+    <%=  social_issue.next_social_issue.id %>. <%=  social_issue.next_social_issue.name %>
+
+    <%= cond do%>
+      <%= social_issue.next_social_issue.is_last -> %>
+        <br />
+        <b>This is the last.</b>
+        <br />
+        <%= social_issue.next_social_issue.situation %>
+        <br />
+        <%= social_issue.next_social_issue.tip %>
+
+
+      <% social_issue.next_social_issue.is_question -> %>
+        <br />
+        <%= social_issue.next_social_issue.situation %>
+        <div class="form-control block mb-2 text-sm font-medium text-gray-900">
+          <.link href={"../" <> @action <> "/" <> to_string(social_issue.next_social_issue.id) <> "/" <> "1"}>
+            <.button>Yes</.button>
+          </.link>
+          <.link href={"../" <> @action <> "/" <> to_string(social_issue.next_social_issue.id) <> "/" <> "0"}>
+            <.button>No</.button>
+          </.link>
+      </div>
+
+      <% true -> %>
+
+    <% end %>
+    <hr/>
+  </div>
+<% end %>
+
+
+<div>
+    <.link href={~p"/"}>
+      <.button>Back to Home</.button>
+    </.link>
+</div>

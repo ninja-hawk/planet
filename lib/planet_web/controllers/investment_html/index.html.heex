@@ -1,5 +1,6 @@
 <.header>
   Select a Solution
+  Find a Next Social Issue
   <:actions>
     <.link href={~p"/"}>
       <.button>Back to Home</.button>
@@ -42,6 +43,23 @@
   </tbody>
 </table>
 
+<.form action={@action} method="post" class="max-w-sm">
+  <.label >Social Issue</.label>
+    <div>
+      <select name="social_issue_id" class="form-control block mb-2 text-sm font-medium text-gray-900" required>
+        <option value="">Select a Social Issue</option>
+        <%= for social_issue <- @social_issues do %>
+          <option value={social_issue.id}>
+            <%= social_issue.id %>. <%= social_issue.name %>
+          </option>
+        <% end %>
+      </select>
+    </div>
+
+  <div>
+    <.button type="submit" id="button">Find a Next Social Issue</.button>
+  </div>
+</.form>
 
 <script>
   document.addEventListener('DOMContentLoaded', function() {

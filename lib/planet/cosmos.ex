@@ -134,7 +134,7 @@ defmodule Planet.Cosmos do
 
   """
 
-  def get_social_issue!(id), do: Repo.get(SocialIssue, id) |> Repo.preload(solutions: :assets)
+  def get_social_issue!(id), do: Repo.get(SocialIssue, id) |> Repo.preload(solutions: :assets, social_issue_flows: :next_social_issue)
 
   def try_social_issue(id) do
     case Repo.get(SocialIssue, id) |> Repo.preload(solutions: :assets) do

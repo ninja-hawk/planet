@@ -36,6 +36,7 @@ defmodule PlanetWeb.Router do
     get "/", PageController, :home
     get "/check_asset", CheckAssetController, :index
     get "/investment", InvestmentController, :index
+    get "/investment/next_social_issue/:id/:answer", InvestmentController, :answer
     get "/calculation", CalculationController, :index
     # get "/check_asset/:messenger", CheckAssetController, :show
   end
@@ -55,6 +56,7 @@ defmodule PlanetWeb.Router do
   scope "/", PlanetWeb do
     pipe_through :browser_without_product
     post "/check_asset/check", CheckAssetController, :check
+    post "/investment/next_social_issue", InvestmentController, :find
     post "/calculation/result", CalculationController, :calculate
   end
 
