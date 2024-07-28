@@ -47,7 +47,7 @@
   <.label >Social Issue</.label>
     <div>
       <select name="social_issue_id" class="form-control block mb-2 text-sm font-medium text-gray-900" required>
-        <option value="0">Select a Social Issue</option>
+        <option value="">Select a Social Issue</option>
         <%= for social_issue <- @social_issues do %>
           <option value={social_issue.id}>
             <%= social_issue.id %>. <%= social_issue.name %>
