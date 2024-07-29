@@ -10,7 +10,7 @@
 <.form action={@action} method="post" class="max-w-sm">
   <.label >Nation Type</.label>
       <div>
-      <select name="nation_type" class="form-control block mb-2 text-sm font-medium text-gray-900" required>
+      <select name="nation_type" class="form-control block mb-2 text-sm font-medium text-gray-900 w-full" required>
         <option value="">Select a Nation Type</option>
         <option value="A">A</option>
         <option value="B">B</option>
@@ -20,7 +20,7 @@
     </div>
   <.label >Turn Number</.label>
       <div>
-      <select name="turn_number" class="form-control block mb-2 text-sm font-medium text-gray-900" required>
+      <select name="turn_number" class="form-control block mb-2 text-sm font-medium text-gray-900 w-full" required>
         <option value="0">Select a Turn Number</option>
         <option value="1">#1</option>
         <option value="2">#2</option>
@@ -29,7 +29,7 @@
     </div>
   <.label >Existing Social Issue</.label>
     <div>
-      <select name="social_issues[]" class="form-control block mb-2 text-sm font-medium text-gray-900">
+      <select name="social_issues[]" class="form-control block mb-2 text-sm font-medium text-gray-900 w-full" >
         <option value="0">Select a Social Issue</option>
         <%= for social_issue <- @social_issues do %>
           <option value={social_issue.id}>
@@ -39,7 +39,7 @@
       </select>
     </div>
     <div>
-      <select name="social_issues[]" class="form-control block mb-2 text-sm font-medium text-gray-900">
+      <select name="social_issues[]" class="form-control block mb-2 text-sm font-medium text-gray-900 w-full">
         <option value="0">Select a Social Issue</option>
         <%= for social_issue <- @social_issues do %>
           <option value={social_issue.id}>
@@ -49,7 +49,7 @@
       </select>
     </div>
     <div>
-      <select name="social_issues[]" class="form-control block mb-2 text-sm font-medium text-gray-900">
+      <select name="social_issues[]" class="form-control block mb-2 text-sm font-medium text-gray-900 w-full">
         <option value="0">Select a Social Issue</option>
         <%= for social_issue <- @social_issues do %>
           <option value={social_issue.id}>
@@ -63,7 +63,7 @@
   <.label>Solved Solution(Multiple Select)</.label>
   <div id="solution-container" class="space-y-2">
     <div class="flex items-center space-x-2">
-      <select name="solutions[]" id="custom-select" class="form-control block mb-2 text-sm font-medium text-gray-900" size="20" multiple required>
+      <select name="solutions[]" id="custom-select" class="form-control block mb-2 text-sm font-medium text-gray-900 w-full" size="20" multiple required>
         <option value="0">0. No Solved Solution</option>
         <%= for solution <- @solutions do %>
           <option value={solution.id}>
@@ -77,15 +77,15 @@
 
   <.label >Sum of Return of Investment for Solution</.label>
   <div>
-    <input name="sum_of_roi" type="number" placeholder="sum_of_roi" value="0" min="0" class="form-control block mb-2 text-sm font-medium text-gray-900" />
+    <input name="sum_of_roi" type="number" placeholder="sum_of_roi" value="0" min="0" class="form-control block mb-2 text-sm font-medium text-gray-900 w-full" />
   </div>
   <.label >The Number of Youthful Population</.label>
   <div>
-    <input name="num_of_youth_pop" type="number" placeholder="num_of_youth_pop" value="0" min="0" class="form-control block mb-2 text-sm font-medium text-gray-900" />
+    <input name="num_of_youth_pop" type="number" placeholder="num_of_youth_pop" value="0" min="0" class="form-control block mb-2 text-sm font-medium text-gray-900 w-full" />
   </div>
   <.label >The Number of Educated Labour Force</.label>
   <div>
-    <input name="num_of_educated_pop" type="number" placeholder="num_of_educated_pop" value="0" min="0" class="form-control block mb-2 text-sm font-medium text-gray-900" />
+    <input name="num_of_educated_pop" type="number" placeholder="num_of_educated_pop" value="0" min="0" class="form-control block mb-2 text-sm font-medium text-gray-900 w-full" />
   </div>
 
 

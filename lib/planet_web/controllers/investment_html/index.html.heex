@@ -11,7 +11,7 @@
 <.form action={@action} method="post" class="max-w-sm">
   <.label >Social Issue</.label>
     <div>
-      <select name="social_issue_id" class="form-control block mb-2 text-sm font-medium text-gray-900" required>
+      <select name="social_issue_id" class="form-control block mb-2 text-sm font-medium text-gray-900 w-full" required>
         <option value="">Select a Social Issue</option>
         <%= for social_issue <- @social_issues do %>
           <option value={social_issue.id}>
@@ -23,7 +23,7 @@
 
 <.label>Solution</.label>
 <div>
-  <select name="solution_id" id="solution" class="form-control block mb-2 text-sm font-medium text-gray-900" required>
+  <select name="solution_id" id="solution" class="form-control block mb-2 text-sm font-medium text-gray-900 w-full" required>
     <option value="0">Select a Solution</option>
     <%= for solution <- @solutions do %>
       <option value={solution.id}>
