@@ -8,26 +8,10 @@
 <div class="form-control block mb-2 text-sm font-medium text-gray-900" >Solution Name: <%=  @solution.name %></div>
 
 
-<figure class="relative fig-caption" style="width: 130px;">
-  <figcaption class="absolute text-xs text-center text-white font-black inset-0 top-4" style="color: #DAAA2C">
-      <p><%=  String.pad_leading(to_string(@social_issue_id), 2, "0") %></p>
-  </figcaption>
-  <img class="rounded-lg" src={~p"/images/social_issue.svg"} width="130">
-  <figcaption class="absolute w-2/3 mx-auto text-xs text-center inset-x-0 font-black bottom-8">
-      <p><%=  @social_issue_name %></p>
-  </figcaption>
-</figure>
+<.social_issue_card social_issue_id={@social_issue_id} social_issue_name={@social_issue_name} />
 
 <%= for asset <- @assets do %>
-  <figure class="relative fig-caption" style="width: 110px;">
-    <figcaption class="absolute text-xs text-center text-white font-black inset-0 top-2" >
-        <p><%=  String.pad_leading(to_string(asset.id), 2, "0") %></p>
-    </figcaption>
-    <img class="rounded-lg" src={~p"/images/asset.svg"} width="110">
-    <figcaption class="absolute text-xs text-center font-black inset-x-0 bottom-6">
-        <p><%=  asset.name %></p>
-    </figcaption>
-  </figure>
+  <.asset_card asset_id={asset.id} asset_name={asset.name} />
 <% end %>
 
 

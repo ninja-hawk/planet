@@ -56,7 +56,7 @@ defmodule PlanetWeb.CheckAssetController do
     IO.inspect(match_solution)
 
     assets = for asset_id <- assets do
-      assets = Cosmos.get_asset!(asset_id)
+      Cosmos.get_asset!(asset_id)
     end
 
     case match_solution do

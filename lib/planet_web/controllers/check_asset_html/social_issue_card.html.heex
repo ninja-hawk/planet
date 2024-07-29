@@ -1,0 +1,22 @@
+<figure class="relative fig-caption" style="width: 130px;">
+  <figcaption class="absolute text-xs text-center text-white font-black inset-0 top-4" style="color: #DAAA2C">
+      <p><%=  String.pad_leading(to_string(@social_issue_id), 2, "0") %></p>
+  </figcaption>
+  <img class="rounded-lg" src={~p"/images/social_issue.svg"} width="130">
+  <figcaption class="absolute w-2/3 mx-auto text-xs text-center inset-x-0 font-black bottom-8">
+      <p><%=  @social_issue_name %></p>
+  </figcaption>
+</figure>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400&family=Varela+Round&display=swap'); 
+.fig-caption {
+  display: inline-block;
+  vertical-align: middle;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+  letter-spacing: 1px;
+  middle; user-select: none;
+  -webkit-user-drag: none;
+  margin: 0;
+}
+</style>
