@@ -1,5 +1,10 @@
 <.header>
   Asset Check Result
+  <:actions>
+    <.link href={~p"/"}>
+      <.button>Back to Home</.button>
+    </.link>
+  </:actions>
 </.header>
 
 
@@ -15,8 +20,4 @@
 <% end %>
 
 
-<div>
-    <.link href={~p"/"}>
-      <.button>Back to Home</.button>
-    </.link>
-</div>
+<.back navigate={~p"/check_asset"}>Back to Check Asset</.back>

@@ -1,5 +1,10 @@
 <.header>
-  Next Social Issue
+  Next Social Issues
+  <:actions>
+    <.link href={~p"/"}>
+      <.button>Back to Home</.button>
+    </.link>
+  </:actions>
 </.header>
 
 <script>
@@ -55,9 +60,4 @@
   </div>
 <% end %>
 
-
-<div>
-    <.link href={~p"/"}>
-      <.button>Back to Home</.button>
-    </.link>
-</div>
+<.back navigate={~p"/investment"}>Back to Investment</.back>

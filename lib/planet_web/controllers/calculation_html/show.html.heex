@@ -1,11 +1,11 @@
 <.header>
   Asset Check Result
+  <:actions>
+    <.link href={~p"/"}>
+      <.button>Back to Home</.button>
+    </.link>
+  </:actions>
 </.header>
-
-<script>
-
-</script>
-
 
 
 
@@ -27,9 +27,4 @@
 <div class="form-control block mb-2 text-sm font-medium text-gray-900" >e_s: <%=  @e_s %> </div>
 
 
-
-<div>
-    <.link href={~p"/"}>
-      <.button>Back to Home</.button>
-    </.link>
-</div>
+<.back navigate={~p"/calculation"}>Back to Calculation</.back>
