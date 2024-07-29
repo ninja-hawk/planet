@@ -60,7 +60,7 @@ defmodule PlanetWeb.CheckAssetController do
     end
 
     case match_solution do
-      nil -> conn |> put_flash(:error, "No matching solutions found.") |> redirect(to: "/")
+      nil -> conn |> put_flash(:error, "No matching solutions found.") |> render(:incorrect, social_issue_id: social_issue_id, social_issue_name: social_issue.name, assets: assets, num_of_youth_pop: num_of_youth_pop)
       _ -> conn |> put_flash(:info, "Correct!") |> render(:show, social_issue_id: social_issue_id, social_issue_name: social_issue.name, solution: match_solution, assets: assets, num_of_youth_pop: num_of_youth_pop)
     end
   end

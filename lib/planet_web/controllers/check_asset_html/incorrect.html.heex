@@ -1,0 +1,21 @@
+<.header>
+  Asset Check Result
+</.header>
+
+
+<div class="form-control block mb-2 text-sm font-medium text-gray-900" >Social Issue: <%=  @social_issue_name %> </div>
+<div class="form-control block mb-2 text-sm font-medium text-gray-900"  style="color: red"><b>Incorrect Set of Assets</b></div>
+
+
+<.social_issue_card social_issue_id={@social_issue_id} social_issue_name={@social_issue_name} />
+
+<%= for asset <- @assets do %>
+  <.asset_card asset_id={asset.id} asset_name={asset.name} />
+<% end %>
+
+
+<div>
+    <.link href={~p"/"}>
+      <.button>Back to Home</.button>
+    </.link>
+</div>
