@@ -8,15 +8,15 @@
 </.header>
 
 
-<div class="form-control block mb-2 text-sm font-medium text-gray-900" >Social Issue: <%=  @social_issue_name %> </div>
-<div class="form-control block mb-2 text-sm font-medium text-gray-900"  style="color: red"><b>Incorrect Set of Assets</b></div>
+<div class="inline-block" style="vertical-align: middle;">
+  <.social_issue_card social_issue_id={@social_issue_id} social_issue_name={@social_issue_name} />
+</div>
 
-
-<.social_issue_card social_issue_id={@social_issue_id} social_issue_name={@social_issue_name} />
-
-<%= for asset <- @assets do %>
-  <.asset_card asset_id={asset.id} asset_name={asset.name} />
-<% end %>
+<div class="inline-block" style="vertical-align: middle;">
+  <%= for asset <- @assets do %>
+    <.asset_card asset_id={asset.id} asset_name={asset.name} />
+  <% end %>
+</div>
 
 
 <.back navigate={~p"/check_asset"}>Back to Check Asset</.back>
