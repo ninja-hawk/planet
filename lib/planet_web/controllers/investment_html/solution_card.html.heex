@@ -1,0 +1,65 @@
+  <figure class="relative block fig-caption" style="width: 350px;">
+    <figcaption class="absolute text-xs text-center text-white font-black left-5 top-3" style="color: #FFF7D1">
+        <p><%=  String.pad_leading(to_string(@solution.id), 2, "0") %></p>
+    </figcaption>
+    <figcaption class="absolute text-sm text-center text-red-600 font-black right-[74px] top-7">
+        <p><%= @solution.co2_effect %></p>
+    </figcaption>
+    <figcaption class="absolute text-lg text-center text-red-600 font-black right-[34px] top-12">
+        <p>
+        <%= cond do %>
+          <%= @solution_input == "0" ->%>
+            <%= @solution.low_return %>
+          <%= @solution_input == "1" ->%>
+            <%= @solution.middle_return %>
+          <%= @solution_input == "2" ->%>
+            <%= @solution.high_return %>
+          <% true -> %>
+        <% end %>
+        </p>
+    </figcaption>
+    <img class="rounded-lg" src={~p"/images/solution.svg"} width="350">
+    <figcaption class="absolute w-4/5 mx-auto text-[8px] text-left inset-x-0 font-black top-10">
+        <p>Social Issue: <%=  @social_issue_id %>. <%=  @social_issue_name %></p>
+        <p>Solution:</p>
+        <p class="inline-block"><%=  @solution.id %>. <%=  @solution.name %></p>
+        <p>Asset:</p>
+        <%= for asset <- @solution.assets do %>
+        <p class="inline-block"><%=  asset.id %>. <%=  asset.name %>,</p>
+        <% end %>
+        <table class="table-auto w-full mb-2 text-[8px] text-center font-black border-black">
+          <thead>
+            <tr>
+              <th class="border border-black px-4">Capital Input</th>
+              <th class="border border-black px-4">Return</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="border border-black px-4 py-2"><%= @solution.low_capital_input%></td>
+              <td class="border border-black px-4 py-2"><%= @solution.low_return%></td>
+            </tr>
+            <tr>
+              <td class="border border-black px-4 py-2"><%= @solution.middle_capital_input%></td>
+              <td class="border border-black px-4 py-2"><%= @solution.middle_return%></td>
+            </tr>
+            <tr>
+              <td class="border border-black px-4 py-2"><%= @solution.high_capital_input%></td>
+              <td class="border border-black px-4 py-2"><%= @solution.high_return%></td>
+            </tr>
+          </tbody>
+        </table>
+    </figcaption>
+  </figure>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400&family=Varela+Round&display=swap'); 
+.fig-caption {
+  vertical-align: middle;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+  letter-spacing: 1px;
+  middle; user-select: none;
+  -webkit-user-drag: none;
+  margin: 0;
+}
+</style>

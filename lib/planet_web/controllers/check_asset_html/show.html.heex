@@ -1,14 +1,11 @@
 <.header>
   Asset Check Result
+  <:actions>
+    <.link href={~p"/"}>
+      <.button>Back to Home</.button>
+    </.link>
+  </:actions>
 </.header>
-
-<script>
-
-</script>
-
-
-
-<br/>
 
 
 <div class="form-control block mb-2 text-sm font-medium text-gray-900" >Social Issue: <%=  @social_issue_name %> </div>
@@ -16,8 +13,19 @@
 <div class="form-control block mb-2 text-sm font-medium text-gray-900" >Solution Name: <%=  @solution.name %></div>
 
 
-<div>
-    <.link href={~p"/"}>
-      <.button>Back to Home</.button>
-    </.link>
+<div class="inline-block" style="vertical-align: middle;">
+  <.social_issue_card social_issue_id={@social_issue_id} social_issue_name={@social_issue_name} />
 </div>
+
+<div class="inline-block" style="vertical-align: middle;">
+  <%= for asset <- @assets do %>
+    <.asset_card asset_id={asset.id} asset_name={asset.name} />
+  <% end %>
+</div>
+
+<div class="block" style="vertical-align: middle;">
+  <.solution_card solution={@solution} social_issue_id={@social_issue_id} social_issue_name={@social_issue_name} />
+</div>
+
+
+<.back navigate={~p"/check_asset"}>Back to Check Asset</.back>

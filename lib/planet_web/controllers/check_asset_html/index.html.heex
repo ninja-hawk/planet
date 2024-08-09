@@ -7,11 +7,11 @@
   </:actions>
 </.header>
 
-<.form action={@action} method="post" class="max-w-sm">
+<.form action={@action} method="post" class="w-full">
   <.label >Social Issue</.label>
     <div>
-      <select name="social_issue_id" class="form-control block mb-2 text-sm font-medium text-gray-900" required>
-        <option value="0">Select a Social Issue</option>
+      <select name="social_issue_id" class="form-control block mb-2 text-sm font-medium text-gray-900 w-full" required>
+        <option value="">Select a Social Issue</option>
         <%= for social_issue <- @social_issues do %>
           <option value={social_issue.id}>
             <%= social_issue.id %>. <%= social_issue.name %>
@@ -22,7 +22,7 @@
 
   <.label >Asset</.label>
     <div>
-      <select name="assets[]" class="form-control block mb-2 text-sm font-medium text-gray-900">
+      <select name="assets[]" class="form-control block mb-2 text-sm font-medium text-gray-900 w-full">
         <option value="0">Select an Asset</option>
         <%= for asset <- @assets do %>
           <option value={asset.id}>
@@ -33,7 +33,7 @@
     </div>
 
   <div>
-    <select name="assets[]" class="form-control block mb-2 text-sm font-medium text-gray-900">
+    <select name="assets[]" class="form-control block mb-2 text-sm font-medium text-gray-900 w-full">
       <option value="0" selected >Select an Asset</option>
       <%= for asset <- @assets do %>
         <option value={asset.id}>
@@ -45,7 +45,7 @@
 
   <.label >The Number of Youthful Population</.label>
   <div>
-    <input name="num_of_youth_pop" type="number" placeholder="num_of_youth_pop" value="0" min="0" class="form-control block mb-2 text-sm font-medium text-gray-900" />
+    <input name="num_of_youth_pop" type="number" placeholder="num_of_youth_pop" value="0" min="0" class="form-control block mb-2 text-sm font-medium text-gray-900 w-full" />
   </div>
 
 
@@ -55,7 +55,7 @@
   </div>
 
   <div>
-    <.button type="submit" id="button" disabled>Check an Asset</.button>
+    <.button type="submit" id="button" class="w-full" disabled>Check an Asset</.button>
   </div>
 </.form>
 

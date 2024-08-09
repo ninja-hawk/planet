@@ -8,45 +8,10 @@
   </:actions>
 </.header>
 
-<.label>Solution</.label>
-<div>
-  <select name="solution_id" id="solution" class="form-control block mb-2 text-sm font-medium text-gray-900" required>
-    <option value="0">Select a Solution</option>
-    <%= for solution <- @solutions do %>
-      <option value={solution.id}>
-        <%= solution.id %>. <%= solution.name %>
-      </option>
-    <% end %>
-  </select>
-</div>
-
-<table class="table-auto w-full">
-  <thead>
-    <tr>
-      <th>Capital Input</th>
-      <th>Return</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td id="low_capital_input_display" class="border px-4 py-2"></td>
-      <td id="low_capital_return_display" class="border px-4 py-2"></td>
-    </tr>
-    <tr>
-      <td id="middle_capital_input_display" class="border px-4 py-2"></td>
-      <td id="middle_capital_return_display" class="border px-4 py-2"></td>
-    </tr>
-    <tr>
-      <td id="high_capital_input_display" class="border px-4 py-2"></td>
-      <td id="high_capital_return_display" class="border px-4 py-2"></td>
-    </tr>
-  </tbody>
-</table>
-
-<.form action={@action} method="post" class="max-w-sm">
+<.form action={@action} method="post" class="w-full">
   <.label >Social Issue</.label>
     <div>
-      <select name="social_issue_id" class="form-control block mb-2 text-sm font-medium text-gray-900" required>
+      <select name="social_issue_id" class="form-control block mb-2 text-sm font-medium text-gray-900 w-full" required>
         <option value="">Select a Social Issue</option>
         <%= for social_issue <- @social_issues do %>
           <option value={social_issue.id}>
@@ -56,8 +21,53 @@
       </select>
     </div>
 
+<.label>Solution</.label>
+<div>
+  <select name="solution_id" id="solution" class="form-control block mb-2 text-sm font-medium text-gray-900 w-full" required>
+    <option value="0">Select a Solution</option>
+    <%= for solution <- @solutions do %>
+      <option value={solution.id}>
+        <%= solution.id %>. <%= solution.name %>
+      </option>
+    <% end %>
+  </select>
+  <select name="solution_input" id="solution_input" class="form-control block mb-2 text-sm font-medium text-gray-900 w-full">
+    <option value="">Select an Investment Plan</option>
+    <option value="0">Low</option>
+    <option value="1">Middle</option>
+    <option value="2">High</option>
+  </select>
+</div>
+
+<table id="table" class="table-auto w-full mb-2 text-sm text-center font-medium text-gray-900">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Capital Input</th>
+      <th>Return</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="border px-4 py-2">Low</td>
+      <td id="low_capital_input_display" class="border px-4 py-2"></td>
+      <td id="low_capital_return_display" class="border px-4 py-2"></td>
+    </tr>
+    <tr>
+      <td class="border px-4 py-2">Middle</td>
+      <td id="middle_capital_input_display" class="border px-4 py-2"></td>
+      <td id="middle_capital_return_display" class="border px-4 py-2"></td>
+    </tr>
+    <tr>
+      <td class="border px-4 py-2">High</td>
+      <td id="high_capital_input_display" class="border px-4 py-2"></td>
+      <td id="high_capital_return_display" class="border px-4 py-2"></td>
+    </tr>
+  </tbody>
+</table>
+
   <div>
-    <.button type="submit" id="button">Find a Next Social Issue</.button>
+    <.button type="submit" id="button" class="w-full">Find a Next Social Issue</.button>
   </div>
 </.form>
 
@@ -65,12 +75,28 @@
   document.addEventListener('DOMContentLoaded', function() {
     const solutions = <%= raw(@solutions |> Enum.map(&%{id: &1.id, low: &1.low_capital_input, middle: &1.middle_capital_input, high: &1.high_capital_input, low_return: &1.low_return, middle_return: &1.middle_return, high_return: &1.high_return}) |> Jason.encode!) %>;
     const solutionSelect = document.getElementById('solution');
+    const solutionInputSelect = document.getElementById('solution_input');
     const lowCapitalDisplay = document.getElementById('low_capital_input_display');
     const middleCapitalDisplay = document.getElementById('middle_capital_input_display');
     const highCapitalDisplay = document.getElementById('high_capital_input_display');
     const lowReturnDisplay = document.getElementById('low_capital_return_display');
     const middleReturnDisplay = document.getElementById('middle_capital_return_display');
     const highReturnDisplay = document.getElementById('high_capital_return_display');
+    const table = document.getElementById('table');
+    const inputList = [
+      {
+        "input": lowCapitalDisplay,
+        "return": lowReturnDisplay
+      },
+      {
+        "input": middleCapitalDisplay,
+        "return": middleReturnDisplay
+      },
+      {
+        "input": highCapitalDisplay,
+        "return": highReturnDisplay
+      },
+    ]
 
     solutionSelect.addEventListener('change', function() {
       const selectedSolution = solutions.find(sol => sol.id == this.value);
@@ -90,5 +116,16 @@
         highReturnDisplay.textContent = '';
       }
     });
+
+    solutionInputSelect.addEventListener('change', function() {
+      inputList.map(function(element){
+        element["input"].classList.remove("text-red-600")
+        element["return"].classList.remove("text-red-600")
+      });
+      console.log(inputList[solutionInputSelect.value]["input"]);
+      inputList[solutionInputSelect.value]["input"].classList.add("text-red-600")
+      inputList[solutionInputSelect.value]["return"].classList.add("text-red-600")
+    });
+
   });
 </script>

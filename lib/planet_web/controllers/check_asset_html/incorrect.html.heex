@@ -1,0 +1,22 @@
+<.header>
+  Asset Check Result
+  <:actions>
+    <.link href={~p"/"}>
+      <.button>Back to Home</.button>
+    </.link>
+  </:actions>
+</.header>
+
+
+<div class="inline-block" style="vertical-align: middle;">
+  <.social_issue_card social_issue_id={@social_issue_id} social_issue_name={@social_issue_name} />
+</div>
+
+<div class="inline-block" style="vertical-align: middle;">
+  <%= for asset <- @assets do %>
+    <.asset_card asset_id={asset.id} asset_name={asset.name} />
+  <% end %>
+</div>
+
+
+<.back navigate={~p"/check_asset"}>Back to Check Asset</.back>

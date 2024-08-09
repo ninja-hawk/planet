@@ -1,0 +1,21 @@
+<figure class="relative fig-caption" style="width: 110px;">
+  <figcaption class="absolute text-xs text-center text-white font-black inset-0 top-2" >
+      <p><%=  String.pad_leading(to_string(@asset_id), 2, "0") %></p>
+  </figcaption>
+  <img class="rounded-lg" src={~p"/images/asset.svg"} width="110">
+  <figcaption class="absolute text-xs text-center font-black inset-x-0 bottom-6">
+      <p><%=  @asset_name %></p>
+  </figcaption>
+</figure>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400&family=Varela+Round&display=swap'); 
+.fig-caption {
+  vertical-align: middle;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+  letter-spacing: 1px;
+  middle; user-select: none;
+  -webkit-user-drag: none;
+  margin: 0;
+}
+</style>

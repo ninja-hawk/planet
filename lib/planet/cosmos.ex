@@ -238,7 +238,7 @@ defmodule Planet.Cosmos do
 
   """
 
-  def get_solution!(id), do: Repo.get(Solution, id)
+  def get_solution!(id), do: Repo.get(Solution, id) |> Repo.preload(:assets)
 
   def try_solution(id) do
     case Repo.get(Solution, id) do

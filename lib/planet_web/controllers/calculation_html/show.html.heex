@@ -1,35 +1,58 @@
 <.header>
   Asset Check Result
+  <:actions>
+    <.link href={~p"/"}>
+      <.button>Back to Home</.button>
+    </.link>
+  </:actions>
 </.header>
 
-<script>
+<table class="table-auto  w-full my-2 text-sm text-center font-medium text-gray-900">
+  <thead>
+    <tr>
+      <th>Item</th>
+      <th>Situation</th>
+    </tr>
+  </thead>
+  <tbody class="px-4 py-2">
+    <tr>
+      <td class="border px-4 py-2">Nation Type</td>
+      <td class="border px-4 py-2"><%=  @nation_type %></td>
+    </tr>
+    <tr>
+      <td class="border px-4 py-2">Turn Number</td>
+      <td class="border px-4 py-2">#<%=  @turn_number %></td>
+    </tr>
+    <tr>
+      <td class="border px-4 py-2">Social Issues</td>
+      <td class="border px-4 py-2"><%=  inspect(@social_issues, charlists: :as_list) %></td>
+    </tr>
+    <tr>
+      <td class="border px-4 py-2">Solutions</td>
+      <td class="border px-4 py-2"><%=  inspect(@solutions, charlists: :as_list) %></td>
+    </tr>
+    <tr>
+      <td class="border px-4 py-2">The Number of Youthful Population</td>
+      <td class="border px-4 py-2"><%=  @num_of_youth_pop %></td>
+    </tr>
+    <tr>
+      <td class="border px-4 py-2">The Number of Educated Labour Force</td>
+      <td class="border px-4 py-2"><%=  @num_of_educated_pop %></td>
+    </tr>
+    <tr class="border-t-2 border-black">
+      <td class="border px-4 py-2 text-red-600"><b>Total Economic Growth</b></td>
+      <td class="border px-4 py-2 text-red-600"><b><%=  @num_of_educated_pop %></b></td>
+    </tr>
+  </tbody> 
+</table>
 
-</script>
-
-
-
-
-
-<div class="form-control block mb-2 text-sm font-medium text-gray-900" >Nation Type: <%=  @nation_type %> </div>
-<div class="form-control block mb-2 text-sm font-medium text-gray-900" >Turn Number: #<%=  @turn_number %> </div>
-<div class="form-control block mb-2 text-sm font-medium text-gray-900" >Social Issues: <%=  inspect(@social_issues, charlists: :as_list) %> </div>
-<div class="form-control block mb-2 text-sm font-medium text-gray-900" >Solutions: <%=  inspect(@solutions, charlists: :as_list) %> </div>
-<div class="form-control block mb-2 text-sm font-medium text-gray-900" >The Number of Youthful Population: <%=  @num_of_youth_pop %> </div>
-<div class="form-control block mb-2 text-sm font-medium text-gray-900" >The Number of Educated Labour Force: <%=  @num_of_educated_pop %> </div>
-<hr/>
-<div class="form-control block mb-2 text-sm font-medium text-gray-900" ><b>Total Economic Growth: <%=  @total_economic_growth %> </b></div>
-<hr/>
+<%!-- <hr/>
 <div class="form-control block mb-2 text-sm font-medium text-gray-900" >y_n: <%=  @y_n %> </div>
 <div class="form-control block mb-2 text-sm font-medium text-gray-900" >y_s: <%=  @y_s %> </div>
 <div class="form-control block mb-2 text-sm font-medium text-gray-900" >m_minus: <%=  @m_minus %> </div>
 <div class="form-control block mb-2 text-sm font-medium text-gray-900" >c: <%=  @c %> </div>
 <div class="form-control block mb-2 text-sm font-medium text-gray-900" >e_i: <%=  @e_i %> </div>
-<div class="form-control block mb-2 text-sm font-medium text-gray-900" >e_s: <%=  @e_s %> </div>
+<div class="form-control block mb-2 text-sm font-medium text-gray-900" >e_s: <%=  @e_s %> </div> --%>
+ 
 
-
-
-<div>
-    <.link href={~p"/"}>
-      <.button>Back to Home</.button>
-    </.link>
-</div>
+<.back navigate={~p"/calculation"}>Back to Calculation</.back>
