@@ -12,9 +12,11 @@ build:
 down:
 	docker compose down
 web:
-	${PREFIX} docker compose exec web bash
+	docker compose exec web bash
 db:
-	${PREFIX} docker compose exec db bash
+	docker compose exec db bash
+log:
+	docker compose logs
 
 # Mac Docker Permission
 mac_docker:
