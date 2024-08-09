@@ -12,7 +12,7 @@ ARG host_gid
 RUN apk add shadow && groupadd -g $host_gid $host_group_name \
   && useradd -m -s /bin/bash -u $host_uid -g $host_gid $host_user_name
 
-USER $host_user_name
+USER root
 
 FROM setup_user AS build_as_user
 RUN mix do local.hex --force, local.rebar --force, archive.install --force hex phx_new
