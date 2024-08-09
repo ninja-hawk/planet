@@ -31,25 +31,35 @@
       </option>
     <% end %>
   </select>
+  <select name="solution_input" id="solution_input" class="form-control block mb-2 text-sm font-medium text-gray-900 w-full">
+    <option value="">Select an Investment Plan</option>
+    <option value="0">Low</option>
+    <option value="1">Middle</option>
+    <option value="2">High</option>
+  </select>
 </div>
 
-<table class="table-auto w-full mb-2 text-sm text-center font-medium text-gray-900">
+<table id="table" class="table-auto w-full mb-2 text-sm text-center font-medium text-gray-900">
   <thead>
     <tr>
+      <th></th>
       <th>Capital Input</th>
       <th>Return</th>
     </tr>
   </thead>
   <tbody>
     <tr>
+      <td class="border px-4 py-2">Low</td>
       <td id="low_capital_input_display" class="border px-4 py-2"></td>
       <td id="low_capital_return_display" class="border px-4 py-2"></td>
     </tr>
     <tr>
+      <td class="border px-4 py-2">Middle</td>
       <td id="middle_capital_input_display" class="border px-4 py-2"></td>
       <td id="middle_capital_return_display" class="border px-4 py-2"></td>
     </tr>
     <tr>
+      <td class="border px-4 py-2">High</td>
       <td id="high_capital_input_display" class="border px-4 py-2"></td>
       <td id="high_capital_return_display" class="border px-4 py-2"></td>
     </tr>
@@ -65,12 +75,28 @@
   document.addEventListener('DOMContentLoaded', function() {
     const solutions = <%= raw(@solutions |> Enum.map(&%{id: &1.id, low: &1.low_capital_input, middle: &1.middle_capital_input, high: &1.high_capital_input, low_return: &1.low_return, middle_return: &1.middle_return, high_return: &1.high_return}) |> Jason.encode!) %>;
     const solutionSelect = document.getElementById('solution');
+    const solutionInputSelect = document.getElementById('solution_input');
     const lowCapitalDisplay = document.getElementById('low_capital_input_display');
     const middleCapitalDisplay = document.getElementById('middle_capital_input_display');
     const highCapitalDisplay = document.getElementById('high_capital_input_display');
     const lowReturnDisplay = document.getElementById('low_capital_return_display');
     const middleReturnDisplay = document.getElementById('middle_capital_return_display');
     const highReturnDisplay = document.getElementById('high_capital_return_display');
+    const table = document.getElementById('table');
+    const inputList = [
+      {
+        "input": lowCapitalDisplay,
+        "return": lowReturnDisplay
+      },
+      {
+        "input": middleCapitalDisplay,
+        "return": middleReturnDisplay
+      },
+      {
+        "input": highCapitalDisplay,
+        "return": highReturnDisplay
+      },
+    ]
 
     solutionSelect.addEventListener('change', function() {
       const selectedSolution = solutions.find(sol => sol.id == this.value);
@@ -90,5 +116,16 @@
         highReturnDisplay.textContent = '';
       }
     });
+
+    solutionInputSelect.addEventListener('change', function() {
+      inputList.map(function(element){
+        element["input"].classList.remove("text-red-600")
+        element["return"].classList.remove("text-red-600")
+      });
+      console.log(inputList[solutionInputSelect.value]["input"]);
+      inputList[solutionInputSelect.value]["input"].classList.add("text-red-600")
+      inputList[solutionInputSelect.value]["return"].classList.add("text-red-600")
+    });
+
   });
 </script>
