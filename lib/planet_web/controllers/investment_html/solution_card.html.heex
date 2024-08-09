@@ -3,7 +3,7 @@
         <p><%=  String.pad_leading(to_string(@solution.id), 2, "0") %></p>
     </figcaption>
     <figcaption class="absolute text-sm text-center text-red-600 font-black right-[74px] top-7">
-        <p><%=  inspect(@solution.co2_effect) %></p>
+        <p><%= @solution.co2_effect %></p>
     </figcaption>
     <figcaption class="absolute text-sm text-center text-red-600 font-black right-9 top-[52px]">
         <p>
