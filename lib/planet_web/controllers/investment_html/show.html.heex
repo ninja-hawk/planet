@@ -75,6 +75,10 @@
   </tbody> 
 </table>
 
-<.solution_card solution={@solution} social_issue_id={@social_issue.id} social_issue_name={@social_issue.name}/>
+<%= if (@solution) do%>
+  <div class="flex justify-center items-center">
+    <.solution_card solution={@solution} social_issue_id={@social_issue.id} social_issue_name={@social_issue.name} solution_input={@solution_input}/>
+  </div>
+<% end %>
 
 <.back navigate={~p"/investment"}>Back to Investment</.back>
