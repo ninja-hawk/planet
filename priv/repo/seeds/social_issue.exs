@@ -16,8 +16,8 @@ for issue <- [
   },
 
   %{
-      name: "Lack of Health care",
-      situation: "Your nation does not have enough doctors and medical institutions for health care. This has caused many diseases and the labor force has been shrinking",
+      name: "Lack of Healthcare",
+      situation: "Your nation does not have enough doctors and medical institutions for healthcare. This has caused many diseases and the labor force has been shrinking",
       possible_solution: "Access to HC",
       youth_effect: -1,
       economic_growth_effect: 0,
@@ -94,7 +94,7 @@ for issue <- [
   },
 
   %{
-      name: "Over crowding of city",
+      name: "Over Crowding of City",
       situation: "Metropolitans in your cities has helped your growth by cetralizing the economy. But this has lead to urban migration.Your people suffers from diseases caused by the airpolution. Your main source of airpolution is from traffic.",
       possible_solution: "Affodable public transport",
       youth_effect: 0,
@@ -107,7 +107,7 @@ for issue <- [
   },
 
   %{
-      name: "CO2 Emittion from power plant",
+      name: "CO2 Emittion from Power Plant",
       situation: "Your nation's electricity is produced mainly by burning focill fuel. It has been and still is a cheap and reliable solution to your nation's energy supply. However, the emission of CO2 from the power plan has started to undermine your people's health.",
       possible_solution: "New energy source",
       youth_effect: 0,
@@ -121,8 +121,7 @@ for issue <- [
 
   %{
       name: "question_1",
-      situation: "Has \"Lack of Education\" been solve OR Do they have a \"Lack of Education\" right now?
-",
+      situation: "\"Lack of Education\" is solved or is an issue.",
       possible_solution: "nan",
       youth_effect: 0,
       economic_growth_effect: 0,
@@ -135,7 +134,7 @@ for issue <- [
 
   %{
       name: "question_2",
-      situation: "At the end of Turn 2: NO \"Hospitals with advanced health care\"?",
+      situation: "\"Hospitals with advanced healthcare\" is still an issue ",
       possible_solution: "nan",
       youth_effect: 0,
       economic_growth_effect: 0,
@@ -148,7 +147,7 @@ for issue <- [
 
   %{
       name: "question_3",
-      situation: "Did the player chose\" Coal-powered electricity plant\"?",
+      situation: "The solution was \" Coal-powered electricity plant\"",
       possible_solution: "nan",
       youth_effect: 0,
       economic_growth_effect: 0,
@@ -161,7 +160,7 @@ for issue <- [
 
   %{
       name: "question_4",
-      situation: "Is \"Slum\" still an issue?",
+      situation: "\"Slum\" is still an issue",
       possible_solution: "nan",
       youth_effect: 0,
       economic_growth_effect: 0,
@@ -174,7 +173,7 @@ for issue <- [
 
   %{
       name: "question_5",
-      situation: "Have they already solved \"Againg population\"?",
+      situation: "\"Againg population\" solved ",
       possible_solution: "nan",
       youth_effect: 0,
       economic_growth_effect: 0,
@@ -187,7 +186,7 @@ for issue <- [
 
   %{
       name: "question_6",
-      situation: "Have they solved \"CO2 Emittion from Power Plan\"?",
+      situation: "\"CO2 Emittion from Power Plan\" solved ",
       possible_solution: "nan",
       youth_effect: 0,
       economic_growth_effect: 0,
@@ -200,7 +199,7 @@ for issue <- [
 
   %{
       name: "question_7",
-      situation: "Have they chose \"Automation\"?",
+      situation: "\"Automation\" as their solution",
       possible_solution: "nan",
       youth_effect: 0,
       economic_growth_effect: 0,
@@ -213,7 +212,7 @@ for issue <- [
 
   %{
       name: "question_8",
-      situation: "Do they have \"Renewable Energy\"?",
+      situation: "\"Renewable Energy\" as their solution",
       possible_solution: "nan",
       youth_effect: 0,
       economic_growth_effect: 0,

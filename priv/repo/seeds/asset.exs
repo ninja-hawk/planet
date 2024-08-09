@@ -42,7 +42,7 @@ for asset <- [
     deleted_at: nil
   },
   %{
-    name: "Know-how of education",
+    name: "Know-how of Education",
     description: "Experties on education system. Education allows you to become educator",
     is_skill: true,
     eco_effect: 0,
@@ -50,7 +50,7 @@ for asset <- [
     deleted_at: nil
   },
   %{
-    name: "Knowledge of healthcare",
+    name: "Knowledge of Healthcare",
     description: "Experties on health care system. Affodable health care allows your population to be haelthier life and work in full potential.",
     is_skill: true,
     eco_effect: 0,
@@ -74,7 +74,7 @@ for asset <- [
     deleted_at: nil
   },
   %{
-    name: "Water Cleaning system",
+    name: "Water Cleaning System",
     description: "Experties on fresh water supply system. Access to fresh water is essecial for raising standard of living and to have more economic growth.",
     is_skill: true,
     eco_effect: 0,

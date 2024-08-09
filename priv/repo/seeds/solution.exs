@@ -62,7 +62,7 @@ solutions = [
   deleted_at: nil
 },
   %{
-  name: "Basic Education system",
+  name: "Basic education system",
   description: "Just like Teragoya in old Japan, local small scale education facilities that teaches basic math, literature and science",
   low_capital_input: 2,
   middle_capital_input: 4,
@@ -107,7 +107,7 @@ solutions = [
   deleted_at: nil
 },
   %{
-  name: "Renewable Energy",
+  name: "Renewable energy",
   description: "Clean energy source, harvested from nature. Although the cost is high, it is unharmful to the enviroment. Hence, allows your nation to have a sustainable growth.",
   low_capital_input: 10,
   middle_capital_input: 14,
@@ -272,7 +272,7 @@ solutions = [
   deleted_at: nil
 },
   %{
-  name: "Renewable Energy",
+  name: "Renewable energy",
   description: "Clean energy source, harvested from nature. Requires a new sort of Energy plants.  Although the cost is high, it is unharmful to the enviroment. Hence, allows your nation to have a sustainable growth.",
   low_capital_input: 10,
   middle_capital_input: 14,
