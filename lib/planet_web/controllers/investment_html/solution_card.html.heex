@@ -8,7 +8,7 @@
         <p>Solution:</p>
         <p class="inline-block"><%=  @solution.id %>. <%=  @solution.name %></p>
         <p>Asset:</p>
-        <%= for asset <- @assets do %>
+        <%= for asset <- @solution.assets do %>
         <p class="inline-block"><%=  asset.id %>. <%=  asset.name %>,</p>
         <% end %>
         <table class="table-auto w-full mb-2 text-[8px] text-center font-black border-black">
